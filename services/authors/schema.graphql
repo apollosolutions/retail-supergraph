@@ -1,0 +1,10 @@
+type Query {
+    author(id: ID!): Author
+    authors: [Author]
+}
+
+type Author @key(fields: "id") {
+    id: ID!
+    name: String!
+    # nomDePlum: String
+}

@@ -1,0 +1,21 @@
+type Query {
+    post(id: ID!): Post
+    posts: [Post]
+}
+
+type Mutation {
+    addPost(authorID: ID!, content: String, title: String): Post
+}
+
+type Post @key(fields: "id") {
+    id: ID!
+    author: Author!
+    content: String!
+    publishedAt: String!
+    title: String!
+}
+
+type Author @key(fields: "id") {
+    id: ID!
+    posts: [Post]
+}

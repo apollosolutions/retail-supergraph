@@ -1,0 +1,24 @@
+{
+  "name": "supergraph-template-with-router",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "concurrently -k npm:server:*",
+    "server:authors": "nodemon ./services/authors/index.js",
+    "server:posts": "nodemon ./services/posts/index.js"
+  },
+  "dependencies": {
+    "@apollo/subgraph": "^2.1.0",
+    "apollo-server": "^3.10.2",
+    "graphql": "^16.6.0"
+  },
+  "devDependencies": {
+    "concurrently": "^7.3.0",
+    "dotenv": "^16.0.1",
+    "nodemon": "^2.0.19",
+    "wait-on": "^6.0.1"
+  }
+}
