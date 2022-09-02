@@ -4,13 +4,13 @@ import { buildSubgraphSchema } from "@apollo/subgraph";
 import { resolvers } from "./resolvers.js";
 import { readFileSync } from "fs";
 
-const typeDefs = gql(readFileSync('services/authors/schema.graphql', 'utf8'));
+const typeDefs = gql(readFileSync('services/products/schema.graphql', 'utf8'));
 const schema = buildSubgraphSchema([{ typeDefs, resolvers }]);
 const server = new ApolloServer({
   schema,
   plugins: [ApolloServerPluginLandingPageLocalDefault({embed: true})]
 });
 
-server.listen(4001).then(({ url }) => {
-  console.log(`🚀 Authors service ready at ${url}`);
+server.listen(4002).then(({ url }) => {
+  console.log(`🚀 Products service ready at ${url}`);
 });
