@@ -1,6 +1,6 @@
-import { ApolloGateway, IntrospectAndCompose } from "@apollo/gateway";
-import { ApolloServerPluginLandingPageLocalDefault } from "apollo-server-core";
-import { ApolloServer } from "apollo-server";
+import {ApolloGateway, IntrospectAndCompose} from "@apollo/gateway";
+import {ApolloServerPluginLandingPageLocalDefault} from "apollo-server-core";
+import {ApolloServer} from "apollo-server";
 
 const gateway = new ApolloGateway({
   supergraphSdl: new IntrospectAndCompose({
@@ -27,6 +27,6 @@ const server = new ApolloServer({
   plugins: [ApolloServerPluginLandingPageLocalDefault({embed: true})]
 });
 
-server.listen(4000).then(({ url }) => {
+server.listen(4000).then(({url}) => {
   console.log(`🚀 Gateway running at ${url}`);
 });
