@@ -5,7 +5,7 @@ type Query {
 }
 
 type Order @key(fields: "id") {
-  id: string
+  id: String
   variant: [Variant!]!
 }
 

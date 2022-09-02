@@ -4,7 +4,7 @@ import { buildSubgraphSchema } from "@apollo/subgraph";
 import { resolvers } from "./resolvers.js";
 import { readFileSync } from "fs";
 
-const typeDefs = gql(readFileSync('services/authors/schema.graphql', 'utf8'));
+const typeDefs = gql(readFileSync('services/orders/schema.graphql', 'utf8'));
 const schema = buildSubgraphSchema([{ typeDefs, resolvers }]);
 const server = new ApolloServer({
   schema,
@@ -12,5 +12,5 @@ const server = new ApolloServer({
 });
 
 server.listen(4001).then(({ url }) => {
-  console.log(`🚀 Authors service ready at ${url}`);
+  console.log(`🚀 Orders service ready at ${url}`);
 });

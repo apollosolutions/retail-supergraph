@@ -6,7 +6,7 @@ type Query {
 }
 
 type Order @key(fields: "id") {
-  id: string
+  id: String
   buyer: User!
   variant: [Variant!]!
 }
