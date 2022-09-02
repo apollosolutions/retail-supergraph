@@ -2,6 +2,10 @@ name: pr-check-code
 
 on: pull_request
 
+env:
+  APOLLO_KEY: ${{ secrets.APOLLO_KEY }}
+  APOLLO_VCS_COMMIT: ${{ github.event.pull_request.head.sha }}
+
 jobs:
   npm-build:
     runs-on: ubuntu-latest
