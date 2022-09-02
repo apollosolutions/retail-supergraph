@@ -8,13 +8,8 @@ type Query {
 type Order @key(fields: "id") {
   id: String
   buyer: User!
-  variant: [Variant!]!
 }
 
-type User @key(fields: "id") {
-  id: String
-}
-
-type Variant @key(fields: "id") {
+type User @key(fields: "id", resolvable: false) {
   id: String
 }
