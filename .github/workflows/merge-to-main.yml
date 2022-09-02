@@ -9,7 +9,7 @@ env:
   APOLLO_VCS_COMMIT: ${{ github.event.pull_request.head.sha }}
 
 jobs:
-  install-rover:
+  publish-schemas:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,11 +20,7 @@ jobs:
           curl -sSL https://rover.apollo.dev/nix/v0.8.1 | sh
           echo "$HOME/.rover/bin" >> $GITHUB_PATH
 
-  publish-orders:
-    runs-on: ubuntu-latest
-    needs: [install-rover]
-    steps:
-      - name: Rover Subgraph Publish
+      - name: Publish orders subgraph
         run: |
           rover subgraph publish ${{ secrets.APOLLO_GRAPH_ID }}@test \
             --name orders \

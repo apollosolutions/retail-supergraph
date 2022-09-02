@@ -3,16 +3,12 @@ name: pr-check-code
 on: pull_request
 
 jobs:
-  checkout:
+  npm-build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-  npm-build:
-    runs-on: ubuntu-latest
-    needs: [checkout]
-    steps:
       - uses: actions/setup-node@v3
         with:
           node-version: 16.x
@@ -20,20 +16,19 @@ jobs:
 
       - run: npm ci
 
-  install-rover:
+  schema-checks:
     runs-on: ubuntu-latest
     needs: [checkout]
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
       - name: Install Rover
         run: |
           curl -sSL https://rover.apollo.dev/nix/v0.8.1 | sh
           echo "$HOME/.rover/bin" >> $GITHUB_PATH
 
-  schema-checks:
-    runs-on: ubuntu-latest
-    needs: [install-rover]
-    steps:
-      - name: Check orders
+      - name: Check orders subgraph
         run: |
           rover subgraph check ${{ secrets.APOLLO_GRAPH_ID }}@test \
             --name orders \
