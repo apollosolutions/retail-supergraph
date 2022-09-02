@@ -22,7 +22,21 @@ jobs:
 
       - name: Publish orders subgraph
         run: |
-          rover subgraph publish ${{ secrets.APOLLO_GRAPH_ID }}@test \
+          rover subgraph publish industry-vertical-retail@test \
             --name orders \
             --routing-url http://localhost:4001 \
             --schema ./services/orders/schema.graphql
+
+      - name: Publish products subgraph
+        run: |
+          rover subgraph publish industry-vertical-retail@test \
+            --name products \
+            --routing-url http://localhost:4002 \
+            --schema ./services/products/schema.graphql
+
+      - name: Publish users subgraph
+        run: |
+          rover subgraph publish industry-vertical-retail@test \
+            --name users \
+            --routing-url http://localhost:4003 \
+            --schema ./services/users/schema.graphql
