@@ -1,18 +1,37 @@
-export const posts = [
-    {
-      id: 1,
-      authorID: 1,
-      title: "The Big Event - What We Know So Far",
-      content:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel ex lacinia, hendrerit lectus ullamcorper, pretium augue. Morbi ornare eu felis quis feugiat. In porta augue a erat viverra, vitae tincidunt mi ultrices.",
-      publishedAt: "2020-09-09T19:31:24.000Z"
+export const users = [
+  {
+    id: '1',
+    username: 'user 1',
+    paymentMethods: [
+      { id: '1', name: "user 1's first credit car", type: 'CREDIT_CARD' },
+      { id: '2', name: "user 1's second credit car", type: 'CREDIT_CARD' },
+    ],
+    cart: {
+      items: [{ id: 1 }, { id: 1 }],
+      subtotal: 1200.5,
     },
-    {
-      id: 2,
-      authorID: 2,
-      title: "Breaking Update About What Happened",
-      content:
-        "Nunc eu fringilla ex, nec mattis ante. Donec maximus a purus id viverra. Curabitur nulla magna, aliquam vitae venenatis vel, feugiat sed nisl. Ut non varius est, ac faucibus nisl. Pellentesque iaculis orci nunc, dapibus lacinia ante pulvinar ut.",
-      publishedAt: "2020-09-09T20:04:57.000Z"
-    }
-  ];
+    orders: [{ id: 1 }, { id: 2 }],
+  },
+  {
+    id: '2',
+    username: 'user 2',
+    paymentMethods: [
+      { id: '3', name: "user 2's first debit car", type: 'DEBIT_CARD' },
+    ],
+    cart: {
+      items: [{ id: 1 }],
+      subtotal: 600.25,
+    },
+    orders: [{ id: 3 }],
+  },
+  {
+    id: '3',
+    username: 'user 2',
+    paymentMethods: [
+      { id: '4', name: "user 3's first debit car", type: 'DEBIT_CARD' },
+      { id: '5', name: "user 3's first bank account", type: 'BANK_ACCOUNT' },
+    ],
+    cart: {},
+    orders: [{ id: 4 }, { id: 5 }, { id: 6 }],
+  },
+];
