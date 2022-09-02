@@ -1,0 +1,26 @@
+type Query {
+  search(searchInput: String): [Variant]
+  variant(id: String): Variant
+  product(id: String): Product
+}
+
+type Order @key(fields: "id") {
+  id: string
+  variant: [Variant!]!
+}
+
+type Product {
+  variants: [Variant]
+  title: String
+  description: String
+  mediaUrl: String
+}
+
+type Variant @key(fields: "id") {
+  id: String
+  product: Product
+  colorway: String
+  price: Float
+  size: String
+  dimensions: String
+}

@@ -1,0 +1,36 @@
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
+
+type Query {
+  viewer: User
+}
+
+type User @key(fields: "id") {
+  id: String
+  username: String
+  paymentMethods: [PaymentMethod]
+  cart: Cart
+  orders(filters: OrderFilters): [Order]
+}
+
+input OrderFilters {
+  orderId: String
+  priceHigh: Float
+  priceLow: Float
+  itemsInOrder: Int
+}
+
+enum PaymentType {
+  CREDIT_CARD
+  DEBIT_CARD
+  BANK_ACCOUNT
+}
+
+type Order @key(fields: "id") {
+  id: string
+}
+
+type Cart {
+  items: [Variant]
+  subtotal: Float
+}
