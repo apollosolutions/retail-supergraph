@@ -12,21 +12,11 @@ Provide detailed usage instructions here.
 
 ### Install requirements
 * Install the latest LTS version of Node (preferably using [nvm](https://github.com/nvm-sh/nvm))
-* Install Apollo's [Rover CLI](https://www.apollographql.com/docs/rover)
 
-### Running the subgraphs
+### Running the subgraphs and gateway
 
-Run the subgraphs which use [Apollo Server](https://www.apollographql.com/docs/apollo-server/) using `npm`
+Run the subgraphs and gateway which use [Apollo Server](https://www.apollographql.com/docs/apollo-server/) using `npm`
 
 ```shell
 npm start
-```
-
-### Running the Router
-
-After the subgraphs are started, run the [Apollo Router](https://www.apollographql.com/docs/router) locally
-
-```shell
-cd router
-./start-local.sh
 ```
