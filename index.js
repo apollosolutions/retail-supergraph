@@ -6,6 +6,8 @@ import { start as gateway } from './gateway/index.js';
 (async () => {
   // start all subgraphs
   await Promise.all([orders(), products(), users()]);
+  // wait 1s, needed for Stackblitz to load
+  await new Promise((r) => setTimeout(r, 1000));
   // start gateway
   await gateway();
 })();
