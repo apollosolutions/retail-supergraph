@@ -4,11 +4,15 @@ Example [supergraph](https://www.apollographql.com/docs/federation) for a retail
 
 **The code in this repository is experimental and has been provided for reference purposes only. Community feedback is welcome but this project may not be supported in the same way that repositories in the official [Apollo GraphQL GitHub organization](https://github.com/apollographql) are. If you need help you can file an issue on this repository, [contact Apollo](https://www.apollographql.com/contact-sales) to talk to an expert, or create a ticket directly in Apollo Studio.**
 
-## Usage
+## View the schema
 
-Provide detailed usage instructions here.
+This demo is published to the [Apollo Solutions](https://studio.apollographql.com/org/apollo-solutions/graphs) Studio org with the graph id [industry-vertical-retail](https://studio.apollographql.com/graph/industry-vertical-retail/home?variant=test)
 
-## Running Locally
+## Running in browser
+
+Using [Stackblitz](stackblitz.com/github/apollosolutions/industry-vertical-retail) you can run a local instance of this supergraph.
+
+## Running locally
 
 ### Install requirements
 * Install the latest LTS version of Node (preferably using [nvm](https://github.com/nvm-sh/nvm))
