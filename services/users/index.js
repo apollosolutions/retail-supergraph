@@ -14,6 +14,7 @@ const server = new ApolloServer({
   },
 });
 
-server.listen(4003).then(({url}) => {
-  console.log(`🚀 User service ready at ${url}`);
-});
+export const start = async () => {
+  const { url } = await server.listen(4003);
+  console.log(`🚀 Users service running at ${url}`);
+};
