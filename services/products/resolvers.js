@@ -1,4 +1,4 @@
-import { authors } from "./data.js";
+import {authors} from "./data.js";
 
 export const resolvers = {
   Author: {
@@ -8,7 +8,7 @@ export const resolvers = {
   },
 
   Query: {
-    author(_, { id }, __, ___) {
+    author(_, {id}, __, ___) {
       return authors.find(author => author.id === parseInt(id));
     },
     authors() {

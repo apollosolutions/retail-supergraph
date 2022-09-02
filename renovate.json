@@ -1,16 +1,19 @@
-
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "schedule": null,
   "prCreation": "immediate",
-  "enabledManagers": ["npm"],
+  "enabledManagers": [
+    "npm"
+  ],
   "dependencyDashboard": true,
-  "rangeStrategy":"update-lockfile",
-  "postUpdateOptions": ["npmDedupe"],
+  "rangeStrategy": "update-lockfile",
+  "postUpdateOptions": [
+    "npmDedupe"
+  ],
   "extends": [
     "config:base"
   ],
-    "packageRules": [
+  "packageRules": [
     {
       "matchPackagePatterns": [
         "*"

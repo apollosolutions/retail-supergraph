@@ -2,7 +2,7 @@ name: merge-to-main
 
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
 
 env:
   APOLLO_KEY: ${{ secrets.APOLLO_KEY }}
