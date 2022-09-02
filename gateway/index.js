@@ -27,6 +27,7 @@ const server = new ApolloServer({
   plugins: [ApolloServerPluginLandingPageLocalDefault({embed: true})]
 });
 
-server.listen(4000).then(({url}) => {
+export const start = async () => {
+  const { url } = await server.listen(4000);
   console.log(`🚀 Gateway running at ${url}`);
-});
+};

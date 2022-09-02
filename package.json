@@ -6,11 +6,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "start": "concurrently -k npm:server:*",
-    "server:orders": "nodemon ./services/orders/index.js",
-    "server:products": "nodemon ./services/products/index.js",
-    "server:users": "nodemon ./services/users/index.js",
-    "server:gateway": "wait-on tcp:4001 tcp:4002 tcp:4003 && nodemon ./gateway/index.js",
+    "start": "nodemon index.js",
     "health-check": "curl http://localhost:4000/graphql?query=%7B__typename%7D",
     "test": "start-server-and-test http://localhost:4000/.well-known/apollo/server-health health-check"
   },
@@ -21,10 +17,7 @@
     "graphql": "^16.6.0"
   },
   "devDependencies": {
-    "concurrently": "^7.3.0",
-    "dotenv": "^16.0.1",
     "nodemon": "^2.0.19",
-    "start-server-and-test": "^1.14.0",
-    "wait-on": "^6.0.1"
+    "start-server-and-test": "^1.14.0"
   }
 }

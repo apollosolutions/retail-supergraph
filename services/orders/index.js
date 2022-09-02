@@ -11,6 +11,7 @@ const server = new ApolloServer({
   plugins: [ApolloServerPluginLandingPageLocalDefault({embed: true})]
 });
 
-server.listen(4001).then(({url}) => {
-  console.log(`🚀 Orders service ready at ${url}`);
-});
+export const start = async () => {
+  const { url } = await server.listen(4001);
+  console.log(`🚀 Orders service running at ${url}`);
+};
