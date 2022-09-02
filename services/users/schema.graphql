@@ -20,6 +20,13 @@ input OrderFilters {
   itemsInOrder: Int
 }
 
+type PaymentMethod {
+  id: String
+  name: String
+  description: String
+  type: PaymentType!
+}
+
 enum PaymentType {
   CREDIT_CARD
   DEBIT_CARD
@@ -27,10 +34,14 @@ enum PaymentType {
 }
 
 type Order @key(fields: "id") {
-  id: string
+  id: String
 }
 
 type Cart {
   items: [Variant]
   subtotal: Float
+}
+
+type Variant @key(fields: "id") {
+  id: String
 }
