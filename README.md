@@ -1,5 +1,7 @@
 # industry-vertical-retail
 
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/apollosolutions/industry-vertical-retail)
+
 Example [supergraph](https://www.apollographql.com/docs/federation) for a retail business
 
 **The code in this repository is experimental and has been provided for reference purposes only. Community feedback is welcome but this project may not be supported in the same way that repositories in the official [Apollo GraphQL GitHub organization](https://github.com/apollographql) are. If you need help you can file an issue on this repository, [contact Apollo](https://www.apollographql.com/contact-sales) to talk to an expert, or create a ticket directly in Apollo Studio.**
@@ -10,7 +12,7 @@ This demo is published to the [Apollo Solutions](https://studio.apollographql.co
 
 ## Running in browser
 
-Using [Stackblitz](stackblitz.com/github/apollosolutions/industry-vertical-retail) you can run a local instance of this supergraph.
+Using [Stackblitz](https://stackblitz.com/github/apollosolutions/industry-vertical-retail) you can run a local instance of this supergraph.
 
 ## Running locally
 
