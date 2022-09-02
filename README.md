@@ -1,6 +1,6 @@
 # industry-vertical-retail
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/apollosolutions/industry-vertical-retail)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/apollosolutions/industry-vertical-retail?title=Apollo%20Solutions%20-%20Industry%20Vertical%20-%20Retail)
 
 Example [supergraph](https://www.apollographql.com/docs/federation) for a retail business
 
@@ -18,7 +18,7 @@ id [industry-vertical-retail](https://studio.apollographql.com/graph/industry-ve
 
 ## Running in browser
 
-Using [Stackblitz](https://stackblitz.com/github/apollosolutions/industry-vertical-retail) you can run a local instance
+Using [Stackblitz](https://stackblitz.com/github/apollosolutions/industry-vertical-retail?title=Apollo%20Solutions%20-%20Industry%20Vertical%20-%20Retail) you can run a local instance
 of this supergraph.
 
 ## Running locally
