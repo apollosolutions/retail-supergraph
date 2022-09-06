@@ -13,5 +13,5 @@ const server = new ApolloServer({
 
 export const start = async () => {
   const { url } = await server.listen(4002);
-  console.log(`🚀 Products service running at ${url}`);
+  console.log(`📦 Products service running at ${url}`);
 };

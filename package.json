@@ -1,5 +1,5 @@
 {
-  "name": "industry-vertical-retail",
+  "name": "@apollosolutions/industry-vertical-retail",
   "version": "1.0.0",
   "main": "index.js",
   "private": true,
