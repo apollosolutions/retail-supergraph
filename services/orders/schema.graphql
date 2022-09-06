@@ -8,7 +8,7 @@ type Query {
 type Order @key(fields: "id") {
   id: String
   buyer: User!
-  variant: [Variant!]!
+  items: [Variant!]!
 }
 
 type User @key(fields: "id") {
