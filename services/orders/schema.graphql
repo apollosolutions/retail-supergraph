@@ -14,3 +14,7 @@ type Order @key(fields: "id") {
 type User @key(fields: "id", resolvable: false) {
   id: String
 }
+
+type Variant @key(fields: "id") {
+  id: String
+}
