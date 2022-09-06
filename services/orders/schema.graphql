@@ -11,10 +11,6 @@ type Order @key(fields: "id") {
   items: [Variant!]!
 }
 
-type User @key(fields: "id") {
-  id: String
-}
-
-type Variant @key(fields: "id") {
+type User @key(fields: "id", resolvable: false) {
   id: String
 }

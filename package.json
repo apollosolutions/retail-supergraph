@@ -1,25 +1,23 @@
 {
-  "name": "supergraph-template-with-router",
+  "name": "industry-vertical-retail",
   "version": "1.0.0",
   "main": "index.js",
   "private": true,
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "start": "concurrently -k npm:server:*",
-    "server:orders": "nodemon ./services/orders/index.js",
-    "server:products": "nodemon ./services/products/index.js",
-    "server:users": "nodemon ./services/users/index.js"
+    "start": "nodemon index.js",
+    "health-check": "curl http://localhost:4000/graphql?query=%7B__typename%7D",
+    "test": "start-server-and-test http://localhost:4000/.well-known/apollo/server-health health-check"
   },
   "dependencies": {
-    "@apollo/subgraph": "^2.1.0",
+    "@apollo/gateway": "^2.1.1",
+    "@apollo/subgraph": "^2.1.1",
     "apollo-server": "^3.10.2",
     "graphql": "^16.6.0"
   },
   "devDependencies": {
-    "concurrently": "^7.3.0",
-    "dotenv": "^16.0.1",
     "nodemon": "^2.0.19",
-    "wait-on": "^6.0.1"
+    "start-server-and-test": "^1.14.0"
   }
 }

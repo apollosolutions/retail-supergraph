@@ -1,0 +1,54 @@
+name: pr-check-code
+
+on: pull_request
+
+env:
+  APOLLO_KEY: ${{ secrets.APOLLO_KEY }}
+  APOLLO_VCS_COMMIT: ${{ github.event.pull_request.head.sha }}
+
+jobs:
+  npm-build:
+    runs-on: ubuntu-latest
+    env:
+      CI: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: "npm"
+
+      - run: npm ci
+
+      - run: npm test
+
+  schema-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Rover
+        run: |
+          curl -sSL https://rover.apollo.dev/nix/latest | sh
+          echo "$HOME/.rover/bin" >> $GITHUB_PATH
+
+      - name: Check orders subgraph
+        run: |
+          rover subgraph check industry-vertical-retail@test \
+            --name orders \
+            --schema ./services/orders/schema.graphql
+
+      - name: Check products subgraph
+        run: |
+          rover subgraph check industry-vertical-retail@test \
+            --name products \
+            --schema ./services/products/schema.graphql
+
+      - name: Check users subgraph
+        run: |
+          rover subgraph check industry-vertical-retail@test \
+            --name users \
+            --schema ./services/users/schema.graphql

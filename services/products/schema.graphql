@@ -1,3 +1,6 @@
+extend schema
+@link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
+
 type Query {
   search(searchInput: String): [Variant]
   variant(id: String): Variant
@@ -9,7 +12,8 @@ type Order @key(fields: "id") {
   variant: [Variant!]!
 }
 
-type Product {
+type Product @key(fields: "id") {
+  id: ID!
   variants: [Variant]
   title: String
   description: String

@@ -1,0 +1,42 @@
+name: merge-to-main
+
+on:
+  push:
+    branches: [ "main" ]
+
+env:
+  APOLLO_KEY: ${{ secrets.APOLLO_KEY }}
+  APOLLO_VCS_COMMIT: ${{ github.event.pull_request.head.sha }}
+
+jobs:
+  publish-schemas:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install Rover
+        run: |
+          curl -sSL https://rover.apollo.dev/nix/latest | sh
+          echo "$HOME/.rover/bin" >> $GITHUB_PATH
+
+      - name: Publish orders subgraph
+        run: |
+          rover subgraph publish industry-vertical-retail@test \
+            --name orders \
+            --routing-url http://localhost:4001 \
+            --schema ./services/orders/schema.graphql
+
+      - name: Publish products subgraph
+        run: |
+          rover subgraph publish industry-vertical-retail@test \
+            --name products \
+            --routing-url http://localhost:4002 \
+            --schema ./services/products/schema.graphql
+
+      - name: Publish users subgraph
+        run: |
+          rover subgraph publish industry-vertical-retail@test \
+            --name users \
+            --routing-url http://localhost:4003 \
+            --schema ./services/users/schema.graphql

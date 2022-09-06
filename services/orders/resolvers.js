@@ -1,4 +1,4 @@
-import { orders } from './data.js';
+import { orders } from "./data.js";
 
 export const resolvers = {
   Query: {
