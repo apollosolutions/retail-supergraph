@@ -1,15 +1,22 @@
 import {users} from './data.js';
 
+const getUserById = (id) => users.find(it => it.id === id);
+
 export const resolvers = {
   Query: {
-    viewer(root, args, context, info) {
+    viewer(root, args, context) {
       const userId = context.headers['user-id'];
 
       if (!userId) {
         return null;
       }
 
-      return users.find((user) => user.id === userId);
+      return getUserById(userId);
     },
   },
+  User: {
+    __resolveReference(ref) {
+      return getUserById(ref.id)
+    }
+  }
 };
