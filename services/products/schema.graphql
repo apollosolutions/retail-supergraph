@@ -1,15 +1,15 @@
 extend schema
-@link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
+  @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
 
 type Query {
-  search(searchInput: String): [Variant]
+  search(searchInput: SearchInput): [Variant]
   variant(id: String): Variant
   product(id: String): Product
 }
 
-type Order @key(fields: "id") {
-  id: String
-  variant: [Variant!]!
+input SearchInput {
+  titleStartsWith: String
+  sizeStartsWith: String
 }
 
 type Product @key(fields: "id") {
