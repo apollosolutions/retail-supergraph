@@ -1,5 +1,5 @@
 extend schema
-@link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
+  @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
 
 type Query {
   order(id: String): Order
@@ -8,8 +8,13 @@ type Query {
 type Order @key(fields: "id") {
   id: String
   buyer: User!
+  items: [Variant!]!
 }
 
 type User @key(fields: "id", resolvable: false) {
+  id: String
+}
+
+type Variant @key(fields: "id") {
   id: String
 }
