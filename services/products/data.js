@@ -10,7 +10,7 @@ export const PRODUCTS = [
   },
   {
     id: "2",
-    variants: [{ id: "3" }, { id: "4" }, { id: "5" }, { id: "6" }],
+    variants: [{ id: "3" }, { id: "4" }, { id: "5" }, { id: "6" }, { id: "7" }],
     title: "Supreme x Tiffany & Co. Box Logo Tee",
     description:
       "A classic Supreme vbox t-shirt in the signature Tiffany blue.",
@@ -19,7 +19,7 @@ export const PRODUCTS = [
   },
   {
     id: "3",
-    variants: [{ id: "7" }, { id: "8" }],
+    variants: [{ id: "8" }],
     title: "THE MACKINAC 40MM",
     description:
       "Established by Detroit’s historic Bayview Yacht club, the days-long Port Huron to Mackinac Island regatta is one of the longest and most grueling freshwater races in the world.\n\nNamed for this legendary competition, the Shinola Mackinac is our first watch with automatic, single-eye chronograph yacht-timer functionality.\n\nIt’s a precision instrument designed to be passed on for generations—just like the tradition that inspires it.",
@@ -79,7 +79,7 @@ export const VARIANTS = [
   },
   {
     id: "7",
-    product: { id: "3" },
+    product: { id: "2" },
     colorway: "Red",
     price: 600.25,
     size: "XL",
