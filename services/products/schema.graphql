@@ -3,8 +3,17 @@ extend schema
 
 type Query {
   search(searchInput: SearchInput): [Variant]
+  allProducts(searchInput: ProductSearchInput): [Product]
   variant(id: String): Variant
   product(id: String): Product
+}
+
+input ProductSearchInput {
+  titleStartsWith: String
+}
+
+input VariantSearchInput {
+  sizeStartsWith: String
 }
 
 input SearchInput {
@@ -14,7 +23,7 @@ input SearchInput {
 
 type Product @key(fields: "id") {
   id: ID!
-  variants: [Variant]
+  variants(searchInput: VariantSearchInput): [Variant]
   title: String
   description: String
   mediaUrl: String
