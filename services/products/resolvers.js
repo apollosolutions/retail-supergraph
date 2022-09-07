@@ -1,18 +1,53 @@
-import {authors} from "./data.js";
+import { PRODUCTS, VARIANTS } from "./data.js";
+
+export const getVariantById = (id) => VARIANTS.find((it) => it.id === id);
+export const getProductById = (id) => PRODUCTS.find((it) => it.id === id);
 
 export const resolvers = {
-  Author: {
-    __resolveReference(reference, _, __) {
-      return authors.find(author => author.id === parseInt(reference.id));
-    }
-  },
-
   Query: {
-    author(_, {id}, __, ___) {
-      return authors.find(author => author.id === parseInt(id));
+    allVariants(_, { searchInput }) {
+      if (searchInput?.sizeStartsWith) {
+        return VARIANTS.filter((v) =>
+          v.size.startsWith(searchInput.sizeStartsWith)
+        );
+      }
+
+      return VARIANTS;
     },
-    authors() {
-      return authors;
-    }
-  }
+    allProducts(_, { searchInput }) {
+      if (searchInput?.titleStartsWith) {
+        return PRODUCTS.filter((p) =>
+          p.title.startsWith(searchInput.titleStartsWith)
+        );
+      }
+
+      return PRODUCTS;
+    },
+  },
+  Product: {
+    __resolveReference(ref) {
+      return getProductById(ref.id);
+    },
+    variants(parent, { searchInput }) {
+      const allVariants = getProductById(parent.id).variants.map((it) =>
+        getVariantById(it.id)
+      );
+
+      if (searchInput?.sizeStartsWith) {
+        return allVariants.filter((it) =>
+          it.size.startsWith(searchInput.sizeStartsWith)
+        );
+      }
+      return allVariants;
+    },
+  },
+  Variant: {
+    __resolveReference(ref) {
+      return getVariantById(ref.id);
+    },
+    product(parent) {
+      const productId = getVariantById(parent.id).product.id;
+      return getProductById(productId);
+    },
+  },
 };
