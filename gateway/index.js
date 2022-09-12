@@ -21,6 +21,10 @@ const gateway = new ApolloGateway({
         name: "inventory",
         url: "http://localhost:4004/graphql",
       },
+      {
+        name: "shipping",
+        url: "http://localhost:4005/graphql",
+      },
     ],
   }),
 });
