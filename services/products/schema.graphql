@@ -23,10 +23,11 @@ type Product @key(fields: "id") {
 }
 
 type Variant @key(fields: "id") {
-  id: String
+  id: ID!
   product: Product
   colorway: String
   price: Float
   size: String
   dimensions: String
+  weight: Float
 }

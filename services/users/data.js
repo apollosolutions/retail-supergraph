@@ -11,6 +11,7 @@ export const users = [
       subtotal: 1200.5,
     },
     orders: [{ id: 1 }, { id: 2 }],
+    shippingAddress: "123 Main St"
   },
   {
     id: "2",
@@ -23,6 +24,7 @@ export const users = [
       subtotal: 600.25,
     },
     orders: [{ id: 3 }],
+    shippingAddress: "123 Main St"
   },
   {
     id: "3",
@@ -33,5 +35,6 @@ export const users = [
     ],
     cart: {},
     orders: [{ id: 4 }, { id: 5 }, { id: 6 }],
+    shippingAddress: "123 Main St"
   },
 ];

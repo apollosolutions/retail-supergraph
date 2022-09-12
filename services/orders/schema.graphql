@@ -7,15 +7,15 @@ type Query {
 }
 
 type Order @key(fields: "id") {
-  id: String
+  id: ID!
   buyer: User!
   items: [Variant!]!
 }
 
 type User @key(fields: "id", resolvable: false) {
-  id: String
+  id: ID!
 }
 
 type Variant @key(fields: "id") {
-  id: String
+  id: ID!
 }

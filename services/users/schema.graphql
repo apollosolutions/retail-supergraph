@@ -6,22 +6,23 @@ type Query {
 }
 
 type User @key(fields: "id") {
-  id: String
+  id: ID!
   username: String
   paymentMethods: [PaymentMethod]
   cart: Cart
   orders(filters: OrderFilters): [Order]
+  shippingAddress: String
 }
 
 input OrderFilters {
-  orderId: String
+  orderId: ID!
   priceHigh: Float
   priceLow: Float
   itemsInOrder: Int
 }
 
 type PaymentMethod {
-  id: String
+  id: ID!
   name: String
   description: String
   type: PaymentType!
@@ -34,7 +35,7 @@ enum PaymentType {
 }
 
 type Order @key(fields: "id", resolvable: false) {
-  id: String
+  id: ID!
 }
 
 type Cart {
@@ -43,5 +44,5 @@ type Cart {
 }
 
 type Variant @key(fields: "id", resolvable: false) {
-  id: String
+  id: ID!
 }
