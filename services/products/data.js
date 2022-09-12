@@ -94,19 +94,3 @@ export const VARIANTS = [
     dimensions: "8inx8inx8in",
   },
 ];
-
-export const getItems = () => {
-  const products = Products.map((p) => {
-    const variants = p.variants.map((index) => Variants[index]);
-
-    return { ...p, variants };
-  });
-
-  const variants = Variants.map((v) => {
-    return {
-      ...v,
-      product: products[v.product],
-    };
-  });
-  return { products, variants };
-};
