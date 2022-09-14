@@ -3,8 +3,11 @@ import { ApolloServerPluginLandingPageLocalDefault } from "apollo-server-core";
 import { buildSubgraphSchema } from "@apollo/subgraph";
 import { resolvers } from "./resolvers.js";
 import { readFileSync } from "fs";
+import { dirname, resolve } from "path";
+import { fileURLToPath } from "url";
 
-const typeDefs = gql(readFileSync("services/shipping/schema.graphql", "utf8"));
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const typeDefs = gql(readFileSync(resolve(__dirname, "schema.graphql"), "utf8"));
 const schema = buildSubgraphSchema([{ typeDefs, resolvers }]);
 const server = new ApolloServer({
   schema,
@@ -14,7 +17,8 @@ const server = new ApolloServer({
   },
 });
 
-export const start = async () => {
-  const { url } = await server.listen(4005);
-  console.log(`🚚 Shipping service running at ${url}`);
+export const start = async (port) => {
+  const serverPort = port ?? process.env.PORT;
+  const { url } = await server.listen(serverPort);
+  console.log(`🚚 Shipping subgraph running at ${url}`);
 };

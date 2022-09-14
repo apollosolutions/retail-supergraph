@@ -1,0 +1,20 @@
+{
+  "name": "@apollosolutions/industry-vertical-retail-inventory",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "NODE_ENV=dev nodemon index.js"
+  },
+  "dependencies": {
+    "@apollo/subgraph": "^2.1.1",
+    "apollo-server": "^3.10.2",
+    "apollo-server-core": "^3.10.2",
+    "graphql": "^16.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
