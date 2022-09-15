@@ -8,6 +8,7 @@ processes = []
 
 [env]
   APOLLO_GRAPH_REF = "industry-vertical-retail@test"
+  APOLLO_KEY = "service:industry-vertical-retail:4vCUg6DXDAZ_3GW5kTXoKg"
   NODE_ENV = "production"
   PORT = "8080"
 

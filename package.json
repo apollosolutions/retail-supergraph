@@ -7,7 +7,7 @@
     "subgraphs/*"
   ],
   "scripts": {
-    "start": "NODE_ENV=dev nodemon index.js",
+    "start": "NODE_ENV=dev nodemon dev.js",
     "health-check": "curl http://localhost:4000/graphql?query=%7B__typename%7D",
     "test": "start-server-and-test http://localhost:4000/.well-known/apollo/server-health health-check"
   },
