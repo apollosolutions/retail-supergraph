@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - uses: superfly/flyctl-actions/setup-flyctl@master
 
       - name: Deploy inventory subgraph
@@ -43,8 +44,7 @@ jobs:
   publish-schemas:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
       - name: Install Rover
         run: |
@@ -53,35 +53,35 @@ jobs:
 
       - name: Publish inventory subgraph
         run: |
-          rover subgraph publish industry-vertical-retail@test \
+          rover subgraph publish industry-vertical-retail@prod \
             --name inventory \
             --routing-url https://apollosolutions--industry-vertical-retail--inventory.fly.dev \
             --schema ./subgraphs/inventory/schema.graphql
 
       - name: Publish orders subgraph
         run: |
-          rover subgraph publish industry-vertical-retail@test \
+          rover subgraph publish industry-vertical-retail@prod \
             --name orders \
             --routing-url https://apollosolutions--industry-vertical-retail--orders.fly.dev \
             --schema ./subgraphs/orders/schema.graphql
 
       - name: Publish products subgraph
         run: |
-          rover subgraph publish industry-vertical-retail@test \
+          rover subgraph publish industry-vertical-retail@prod \
             --name products \
             --routing-url https://apollosolutions--industry-vertical-retail--products.fly.dev \
             --schema ./subgraphs/products/schema.graphql
 
       - name: Publish shipping subgraph
         run: |
-          rover subgraph publish industry-vertical-retail@test \
+          rover subgraph publish industry-vertical-retail@prod \
             --name shipping \
             --routing-url https://apollosolutions--industry-vertical-retail--shipping.fly.dev \
             --schema ./subgraphs/shipping/schema.graphql
 
       - name: Publish users subgraph
         run: |
-          rover subgraph publish industry-vertical-retail@test \
+          rover subgraph publish industry-vertical-retail@prod \
             --name users \
             --routing-url https://apollosolutions--industry-vertical-retail--users.fly.dev \
             --schema ./subgraphs/users/schema.graphql
