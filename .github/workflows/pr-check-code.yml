@@ -39,16 +39,16 @@ jobs:
         run: |
           rover subgraph check industry-vertical-retail@test \
             --name orders \
-            --schema ./services/orders/schema.graphql
+            --schema ./subgraphs/orders/schema.graphql
 
       - name: Check products subgraph
         run: |
           rover subgraph check industry-vertical-retail@test \
             --name products \
-            --schema ./services/products/schema.graphql
+            --schema ./subgraphs/products/schema.graphql
 
       - name: Check users subgraph
         run: |
           rover subgraph check industry-vertical-retail@test \
             --name users \
-            --schema ./services/users/schema.graphql
+            --schema ./subgraphs/users/schema.graphql

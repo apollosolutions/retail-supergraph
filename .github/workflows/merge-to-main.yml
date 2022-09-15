@@ -7,8 +7,39 @@ on:
 env:
   APOLLO_KEY: ${{ secrets.APOLLO_KEY }}
   APOLLO_VCS_COMMIT: ${{ github.event.pull_request.head.sha }}
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
 jobs:
+  deploy-to-fly:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Deploy inventory subgraph
+        working-directory: ./subgraphs/inventory
+        run: flyctl deploy --remote-only
+
+      - name: Deploy orders subgraph
+        working-directory: ./subgraphs/orders
+        run: flyctl deploy --remote-only
+
+      - name: Deploy products subgraph
+        working-directory: ./subgraphs/products
+        run: flyctl deploy --remote-only
+
+      - name: Deploy shipping subgraph
+        working-directory: ./subgraphs/shipping
+        run: flyctl deploy --remote-only
+
+      - name: Deploy users subgraph
+        working-directory: ./subgraphs/users
+        run: flyctl deploy --remote-only
+
+      - name: Deploy gateway
+        working-directory: ./gateway
+        run: flyctl deploy --remote-only
+
   publish-schemas:
     runs-on: ubuntu-latest
     steps:
@@ -20,23 +51,37 @@ jobs:
           curl -sSL https://rover.apollo.dev/nix/latest | sh
           echo "$HOME/.rover/bin" >> $GITHUB_PATH
 
+      - name: Publish inventory subgraph
+        run: |
+          rover subgraph publish industry-vertical-retail@test \
+            --name inventory \
+            --routing-url https://apollosolutions--industry-vertical-retail--inventory.fly.dev \
+            --schema ./subgraphs/inventory/schema.graphql
+
       - name: Publish orders subgraph
         run: |
           rover subgraph publish industry-vertical-retail@test \
             --name orders \
-            --routing-url http://localhost:4001 \
-            --schema ./services/orders/schema.graphql
+            --routing-url https://apollosolutions--industry-vertical-retail--orders.fly.dev \
+            --schema ./subgraphs/orders/schema.graphql
 
       - name: Publish products subgraph
         run: |
           rover subgraph publish industry-vertical-retail@test \
             --name products \
-            --routing-url http://localhost:4002 \
-            --schema ./services/products/schema.graphql
+            --routing-url https://apollosolutions--industry-vertical-retail--products.fly.dev \
+            --schema ./subgraphs/products/schema.graphql
+
+      - name: Publish shipping subgraph
+        run: |
+          rover subgraph publish industry-vertical-retail@test \
+            --name shipping \
+            --routing-url https://apollosolutions--industry-vertical-retail--shipping.fly.dev \
+            --schema ./subgraphs/shipping/schema.graphql
 
       - name: Publish users subgraph
         run: |
           rover subgraph publish industry-vertical-retail@test \
             --name users \
-            --routing-url http://localhost:4003 \
-            --schema ./services/users/schema.graphql
+            --routing-url https://apollosolutions--industry-vertical-retail--users.fly.dev \
+            --schema ./subgraphs/users/schema.graphql
