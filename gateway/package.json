@@ -6,7 +6,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "start": "NODE_ENV=dev nodemon index.js"
+    "start": "nodemon index.js",
+    "dev": "NODE_ENV=dev npm start"
   },
   "dependencies": {
     "@apollo/gateway": "^2.1.1",
