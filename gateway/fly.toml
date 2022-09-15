@@ -7,7 +7,7 @@ processes = []
   builder = "heroku/buildpacks:20"
 
 [env]
-  APOLLO_GRAPH_REF = "industry-vertical-retail@test"
+  APOLLO_GRAPH_REF = "industry-vertical-retail@prod"
   NODE_ENV = "production"
   PORT = "8080"
 
