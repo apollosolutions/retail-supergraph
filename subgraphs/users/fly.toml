@@ -7,7 +7,7 @@ processes = []
   builder = "heroku/buildpacks:20"
 
 [env]
-  NODE_ENV = "production"
+  NODE_ENV = "fly"
   PORT = "8080"
 
 [experimental]
