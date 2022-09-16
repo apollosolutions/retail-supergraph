@@ -85,3 +85,6 @@ jobs:
             --name users \
             --routing-url https://apollosolutions--industry-vertical-retail--users.fly.dev \
             --schema ./subgraphs/users/schema.graphql
+
+      - name: Publish README
+        run: rover readme publish industry-vertical-retail@prod --file README.md
