@@ -11,6 +11,7 @@ const typeDefs = gql(readFileSync(resolve(__dirname, "schema.graphql"), "utf8"))
 const schema = buildSubgraphSchema([{typeDefs, resolvers}]);
 const server = new ApolloServer({
   schema,
+  cache: "bounded",
   plugins: [ApolloServerPluginLandingPageLocalDefault({embed: true})],
   context: (c) => {
     return {headers: c.req.headers};

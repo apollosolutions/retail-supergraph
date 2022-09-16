@@ -8,6 +8,7 @@ export const start = async (port) => {
   const server = new ApolloServer({
     gateway,
     subscriptions: false,
+    cache: "bounded",
     plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
   });
 
