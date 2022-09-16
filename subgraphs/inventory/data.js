@@ -1,34 +1,34 @@
 export const INVENTORY = [
   {
-    id: "1",
+    id: "variant:1",
     inventory: 0,
   },
   {
-    id: "2",
+    id: "variant:2",
     inventory: 1,
   },
   {
-    id: "3",
+    id: "variant:3",
     inventory: 1,
   },
   {
-    id: "4",
+    id: "variant:4",
     inventory: 2,
   },
   {
-    id: "5",
+    id: "variant:5",
     inventory: 3,
   },
   {
-    id: "6",
+    id: "variant:6",
     inventory: 5,
   },
   {
-    id: "7",
+    id: "variant:7",
     inventory: 8,
   },
   {
-    id: "8",
+    id: "variant:8",
     inventory: 13,
   },
 ];

@@ -1,40 +1,40 @@
 export const users = [
   {
-    id: "1",
-    username: "user 1",
+    id: "user:1",
+    username: "User One",
     paymentMethods: [
-      { id: "1", name: "user 1's first credit car", type: "CREDIT_CARD" },
-      { id: "2", name: "user 1's second credit car", type: "CREDIT_CARD" },
+      { id: "paymentMethod:1", name: "User One's first credit car", type: "CREDIT_CARD" },
+      { id: "paymentMethod:2", name: "User One's second credit car", type: "CREDIT_CARD" },
     ],
     cart: {
-      items: [{ id: 1 }, { id: 1 }],
+      items: [{ id: "variant:1" }, { id: "variant:2" }],
       subtotal: 1200.5,
     },
-    orders: [{ id: 1 }, { id: 2 }],
+    orders: [{ id: "order:1" }, { id: "order:2" }],
     shippingAddress: "123 Main St"
   },
   {
-    id: "2",
-    username: "user 2",
+    id: "user:2",
+    username: "User Two",
     paymentMethods: [
-      { id: "3", name: "user 2's first debit car", type: "DEBIT_CARD" },
+      { id: "paymentMethod:3", name: "User Two's first debit car", type: "DEBIT_CARD" },
     ],
     cart: {
-      items: [{ id: 1 }],
+      items: [{ id: "variant:1" }],
       subtotal: 600.25,
     },
-    orders: [{ id: 3 }],
+    orders: [{ id: "order:3" }],
     shippingAddress: "123 Main St"
   },
   {
-    id: "3",
-    username: "user 2",
+    id: "user:3",
+    username: "User Three",
     paymentMethods: [
-      { id: "4", name: "user 3's first debit car", type: "DEBIT_CARD" },
-      { id: "5", name: "user 3's first bank account", type: "BANK_ACCOUNT" },
+      { id: "paymentMethod:4", name: "User Three's first debit car", type: "DEBIT_CARD" },
+      { id: "paymentMethod:5", name: "User Three's first bank account", type: "BANK_ACCOUNT" },
     ],
     cart: {},
-    orders: [{ id: 4 }, { id: 5 }, { id: 6 }],
+    orders: [{ id: "order:4" }, { id: "order:5" }, { id: "order:6" }],
     shippingAddress: "123 Main St"
   },
 ];
