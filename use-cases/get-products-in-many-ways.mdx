@@ -49,17 +49,141 @@ When clicked we would go to a PDP (product display page). Using the id in the ur
 query:
 
 ```graphql
-
+query HomeScreenRow($getProductByIdId: String) {
+  getProductById(id: $getProductByIdId) {
+    title
+    description
+    mediaUrl
+    variants {
+      colorway
+      price
+      size
+    }
+  }
+}
 ```
 
 with variables of:
 
 ```JSON
-
+{
+  "getProductByIdId": "product:2"
+}
 ```
 
 response:
 
 ```JSON
-
+{
+  "data": {
+    "getProductById": {
+      "title": "Supreme x Tiffany & Co. Box Logo Tee",
+      "description": "A classic Supreme vbox t-shirt in the signature Tiffany blue.",
+      "mediaUrl": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQWDHD3SSS98UAVKODaql7nrDTopfL4tcTnEltW8Yqy4hyDu4i5b70Wb3Y8-wACJIo5g-ZdRULPQKUmt7JfwiaSdgiOBz4pvU_YelKHUI4nhoXmMJPeh_tyWQ",
+      "variants": [
+        {
+          "colorway": "Tiffany blue",
+          "price": 600.25,
+          "size": "S"
+        },
+        {
+          "colorway": "Tiffany blue",
+          "price": 600.25,
+          "size": "M"
+        },
+        {
+          "colorway": "Tiffany blue",
+          "price": 600.25,
+          "size": "L"
+        },
+        {
+          "colorway": "Tiffany blue",
+          "price": 600.25,
+          "size": "XL"
+        },
+        {
+          "colorway": "Tiffany blue",
+          "price": 600.25,
+          "size": "XS"
+        }
+      ]
+    }
+  }
+}
 ```
+
+This data is enough to render the page with a discription, images, what sizes are, and the pices of each size. One of the great things of the things that GraphQL is it load many different things. Now that we have the product described we can display some of this shipping information, and if its in stock.
+
+to get the shipping information we can use the following:
+
+query:
+
+```graphql
+query GetVariantShippingInformation($getVariantByIdId: String) {
+  getVariantById(id: $getVariantByIdId) {
+    dimensions
+    weight
+  }
+}
+```
+
+variables:
+
+```JSON
+{
+  "getVariantByIdId": "variant:4"
+}
+```
+
+results:
+
+```JSON
+{
+  "data": {
+    "getVariantById": {
+      "dimensions": "36inx36inx1in",
+      "weight": 30
+    }
+  }
+}
+```
+
+This gives us the dimentions for the size small shirt. The following will tell us if there is any in stock and how many:
+
+query:
+
+```graphql
+query GetVariantInventoryInformation($getVariantByIdId: String) {
+  getVariantById(id: $getVariantByIdId) {
+    inventory {
+      inStock
+      inventory
+    }
+  }
+}
+```
+
+variables:
+
+```JSON
+{
+  "getVariantByIdId": "variant:4"
+}
+```
+
+results:
+
+```JSON
+{
+  "data": {
+    "getVariantById": {
+      "inventory": {
+        "inStock": true,
+        "inventory": 2
+      }
+    }
+  }
+}
+```
+
+As you can see from the examples the shcmea in this graph can answer multiple questions.
