@@ -9,6 +9,10 @@ export const start = async (port) => {
     gateway,
     subscriptions: false,
     cache: "bounded",
+    csrfPrevention: true,
+    cors: {
+      origin: "*"
+    },
     plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
   });
 
