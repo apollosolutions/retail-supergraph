@@ -10,7 +10,13 @@ export const PRODUCTS = [
   },
   {
     id: "product:2",
-    variants: [{ id: "variant:3" }, { id: "variant:4" }, { id: "variant:5" }, { id: "variant:6" }, { id: "variant:7" }],
+    variants: [
+      { id: "variant:4" },
+      { id: "variant:5" },
+      { id: "variant:6" },
+      { id: "variant:7" },
+      { id: "variant:9" },
+    ],
     title: "Supreme x Tiffany & Co. Box Logo Tee",
     description:
       "A classic Supreme vbox t-shirt in the signature Tiffany blue.",
@@ -36,7 +42,7 @@ export const VARIANTS = [
     price: 600.25,
     size: "10",
     dimensions: "12inx10inx6in",
-    weight: 10.0
+    weight: 10.0,
   },
   {
     id: "variant:2",
@@ -45,52 +51,52 @@ export const VARIANTS = [
     price: 20.12,
     size: "11",
     dimensions: "12inx10inx6in",
-    weight: 10.0
+    weight: 10.0,
   },
   {
     id: "variant:3",
-    product: { id: "product:2" },
+    product: { id: "product:1" },
     colorway: "Gold",
     price: 100.0,
     size: "12",
     dimensions: "12inx10inx6in",
-    weight: 10.0
+    weight: 10.0,
   },
   {
     id: "variant:4",
     product: { id: "product:2" },
-    colorway: "Red",
+    colorway: "Tiffany blue",
     price: 600.25,
     size: "S",
     dimensions: "36inx36inx1in",
-    weight: 30.0
+    weight: 30.0,
   },
   {
     id: "variant:5",
     product: { id: "product:2" },
-    colorway: "Red",
+    colorway: "Tiffany blue",
     price: 600.25,
     size: "M",
     dimensions: "36inx36inx1in",
-    weight: 30.0
+    weight: 30.0,
   },
   {
     id: "variant:6",
     product: { id: "product:2" },
-    colorway: "Red",
+    colorway: "Tiffany blue",
     price: 600.25,
     size: "L",
     dimensions: "36inx36inx1in",
-    weight: 30.0
+    weight: 30.0,
   },
   {
     id: "variant:7",
     product: { id: "product:2" },
-    colorway: "Red",
+    colorway: "Tiffany blue",
     price: 600.25,
     size: "XL",
     dimensions: "36inx36inx1in",
-    weight: 30.0
+    weight: 30.0,
   },
   {
     id: "variant:8",
@@ -99,6 +105,15 @@ export const VARIANTS = [
     price: 3499.99,
     size: "40mm",
     dimensions: "8inx8inx8in",
-    weight: 5.0
+    weight: 5.0,
+  },
+  {
+    id: "variant:9",
+    product: { id: "product:2" },
+    colorway: "Tiffany blue",
+    price: 600.25,
+    size: "XS",
+    dimensions: "36inx36inx1in",
+    weight: 30.0,
   },
 ];
