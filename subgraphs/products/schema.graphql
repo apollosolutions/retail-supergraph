@@ -4,6 +4,8 @@ extend schema
 type Query {
   allProducts(searchInput: ProductSearchInput): [Product]
   allVariants(searchInput: VariantSearchInput): [Variant]
+  getProductById(id: String): Product
+  getVariantById(id: String): Variant
 }
 
 input ProductSearchInput {
