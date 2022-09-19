@@ -5,6 +5,8 @@ export const getProductById = (id) => PRODUCTS.find((it) => it.id === id);
 
 export const resolvers = {
   Query: {
+    getProductById: (_, { id }) => (!id ? null : getProductById(id)),
+    getVariantById: (_, { id }) => (!id ? null : getVariantById(id)),
     allVariants(_, { searchInput }) {
       if (searchInput?.sizeStartsWith) {
         return VARIANTS.filter((v) =>
