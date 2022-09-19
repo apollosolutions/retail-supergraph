@@ -5,6 +5,10 @@ type Order @key(fields: "id") {
   id: ID!
   buyer: User! @external
   items: [Variant!]! @external
+
+  """
+  Calculate the cost to ship all the variants to the users address
+  """
   shippingCost: Float @requires(fields: "items { weight } buyer { shippingAddress }")
 }
 
