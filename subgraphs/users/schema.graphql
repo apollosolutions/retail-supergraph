@@ -37,6 +37,9 @@ type User @key(fields: "id") {
   shippingAddress: String
 }
 
+"""
+Search filters for when showing an users previous purchases
+"""
 input OrderFilters {
   orderId: ID!
   priceHigh: Float
@@ -44,6 +47,9 @@ input OrderFilters {
   itemsInOrder: Int
 }
 
+"""
+A saved payment option for an user
+"""
 type PaymentMethod {
   id: ID!
   name: String
@@ -60,6 +66,9 @@ enum PaymentType {
   BANK_ACCOUNT
 }
 
+"""
+An user's saved cart session. Only one cart can be active at a time
+"""
 type Cart {
   """
   Items saved in the cart session

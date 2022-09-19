@@ -10,6 +10,9 @@ type Variant @key(fields: "id") {
   inventory: Inventory
 }
 
+"""
+Inventory details about a specific Variant
+"""
 type Inventory {
   """
   Returns true if the inventory count is greater than 0
