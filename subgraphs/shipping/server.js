@@ -12,6 +12,10 @@ const schema = buildSubgraphSchema([{ typeDefs, resolvers }]);
 const server = new ApolloServer({
   schema,
   cache: "bounded",
+  csrfPrevention: true,
+  cors: {
+    origin: "*"
+  },
   plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
   context: (c) => {
     return { headers: c.req.headers };
