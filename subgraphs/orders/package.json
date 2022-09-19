@@ -6,8 +6,8 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js",
-    "dev": "NODE_ENV=dev npm start"
+    "start": "node index.js",
+    "dev": "NODE_ENV=dev nodemon index.js"
   },
   "dependencies": {
     "@apollo/subgraph": "^2.1.1",

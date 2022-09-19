@@ -7,12 +7,10 @@ export const start = async (port) => {
 
   const server = new ApolloServer({
     gateway,
+    debug: isDebugMode(),
     subscriptions: false,
     cache: "bounded",
     csrfPrevention: true,
-    cors: {
-      origin: "*"
-    },
     plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
   });
 
@@ -48,9 +46,15 @@ const getGatewayConfig = () => {
           },
         ]
       }),
-      debug: true
+      debug: isDebugMode()
     };
   } else {
-    return {};
+    return {
+      debug: isDebugMode()
+    };
   }
+};
+
+const isDebugMode = () => {
+  return process.env.NODE_ENV === 'dev' || process.env.GATEWAY_DEBUG === 'true' || false;
 };
