@@ -40,5 +40,5 @@ npm install
 Run the subgraphs and gateway, which use [Apollo Server](https://www.apollographql.com/docs/apollo-server/), using `npm`
 
 ```shell
-npm start
+npm run dev
 ```
