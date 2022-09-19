@@ -3,10 +3,21 @@ extend schema
 
 type Variant @key(fields: "id") {
   id: ID!
+
+  """
+  Checks the warehouse API for inventory information.
+  """
   inventory: Inventory
 }
 
 type Inventory {
-  inStock: Boolean
+  """
+  Returns true if the inventory count is greater than 0
+  """
+  inStock: Boolean!
+
+  """
+  The raw count of not purchased items in the warehouse
+  """
   inventory: Int
 }

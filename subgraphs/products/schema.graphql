@@ -8,14 +8,24 @@ type Query {
   getVariantById(id: String): Variant
 }
 
+"""
+Search filters for when returning Products
+"""
 input ProductSearchInput {
   titleStartsWith: String
 }
 
+"""
+Search filters for when returning Variants
+"""
 input VariantSearchInput {
   sizeStartsWith: String
 }
 
+"""
+A specific product sold by our store. This contains all the high level details but is not the purchasable item.
+See Variant for more info.
+"""
 type Product @key(fields: "id") {
   id: ID!
   variants(searchInput: VariantSearchInput): [Variant]
@@ -24,6 +34,9 @@ type Product @key(fields: "id") {
   mediaUrl: String
 }
 
+"""
+A purchasable item with a SKU
+"""
 type Variant @key(fields: "id") {
   id: ID!
   product: Product

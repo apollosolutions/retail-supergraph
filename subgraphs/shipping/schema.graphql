@@ -2,18 +2,22 @@ extend schema
   @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key", "@external", "@requires"])
 
 type Order @key(fields: "id") {
-  id: ID!
+  id: ID! @external
   buyer: User! @external
   items: [Variant!]! @external
+
+  """
+  Calculate the cost to ship all the variants to the users address
+  """
   shippingCost: Float @requires(fields: "items { weight } buyer { shippingAddress }")
 }
 
 type User @key(fields: "id", resolvable: false) {
-  id: ID!
+  id: ID! @external
   shippingAddress: String @external
 }
 
 type Variant @key(fields: "id", resolvable: false) {
-  id: ID!
+  id: ID! @external
   weight: Float @external
 }

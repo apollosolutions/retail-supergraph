@@ -1,16 +1,39 @@
 extend schema
-@link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
+  @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
 
 type Query {
   viewer: User
 }
 
+"""
+An user account in our system
+"""
 type User @key(fields: "id") {
   id: ID!
+
+  """
+  The users login username
+  """
   username: String
+
+  """
+  Saved payment methods that can be used to submit orders
+  """
   paymentMethods: [PaymentMethod]
+
+  """
+  The user's active cart session. Once the cart items have been purchases, they transition to an Order
+  """
   cart: Cart
+
+  """
+  The users previous purchases
+  """
   orders(filters: OrderFilters): [Order]
+
+  """
+  The users current saved shipping address
+  """
   shippingAddress: String
 }
 
@@ -28,19 +51,29 @@ type PaymentMethod {
   type: PaymentType!
 }
 
+"""
+A fix set of payment types that we accept
+"""
 enum PaymentType {
   CREDIT_CARD
   DEBIT_CARD
   BANK_ACCOUNT
 }
 
-type Order @key(fields: "id", resolvable: false) {
-  id: ID!
+type Cart {
+  """
+  Items saved in the cart session
+  """
+  items: [Variant]
+
+  """
+  The current total of all the items in the cart, before taxes and shipping
+  """
+  subtotal: Float
 }
 
-type Cart {
-  items: [Variant]
-  subtotal: Float
+type Order @key(fields: "id", resolvable: false) {
+  id: ID!
 }
 
 type Variant @key(fields: "id", resolvable: false) {
