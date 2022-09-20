@@ -31,4 +31,8 @@ export const INVENTORY = [
     id: "variant:8",
     inventory: 13,
   },
+  {
+    id: "variant:9",
+    inventory: 100,
+  },
 ];
