@@ -1,6 +1,6 @@
 ## Showing a product in multiple ways
 
-In the retail world the fist thing that is seen by users is a home page. Home pages on most pages are rows and/or columns of products.
+The first thing users see on a retail application is a home page. Home pages on most pages are rows and/or columns of products.
 
 A sample query that could power a row in the home screen is the following:
 
@@ -42,9 +42,9 @@ response:
 }
 ```
 
-This simple approche gives us least amount of data needed to render a row on the home page and give a link to a products page. With the id you can link to a product page with a reltive url of something like `/p/{res.data.allProducts[0].id}` or, in this case `/p/product%3A2` ("%3A" is the encoded value for ":").
+This simple approach gives us the least amount of data needed to render a row on the home page and give a link to a product page. With the id you can link to a product page with a relative URL of something like `/p/{res.data.allProducts[0].id}` or, in this case `/p/product%3A2` ("%3A" is the encoded value for ":").
 
-When clicked we would go to a PDP (product display page). Using the id in the url we can then make a query like the following to supply all the bulk of the PDPs information:
+When clicked, we would go to a PDP (product display page). Using the id in the URL, we can then make a query like the following to supply all the bulk of the PDPs information:
 
 query:
 
@@ -112,9 +112,9 @@ response:
 }
 ```
 
-This data is enough to render the page with a discription, images, what sizes are, and the pices of each size. One of the great things of the things that GraphQL is it load many different things. Now that we have the product described we can display some of this shipping information, and if its in stock.
+This data is enough to render the page with a description, images, what sizes are available, and the price of each size. One of the great things about GraphQL is what the schema empowers clients to do. With no changes to the schema, we can display some of this shipping information and if it's in stock.
 
-to get the shipping information we can use the following:
+To get the shipping information, we can use the following:
 
 query:
 
@@ -148,7 +148,7 @@ results:
 }
 ```
 
-This gives us the dimentions for the size small shirt. The following will tell us if there is any in stock and how many:
+This gives us the dimensions for the size small shirt. The following will tell us if there are any in stock and how many:
 
 query:
 
@@ -186,4 +186,4 @@ results:
 }
 ```
 
-As you can see from the examples the shcmea in this graph can answer multiple questions.
+As you can see from the examples, the schema in this graph can answer multiple questions.
