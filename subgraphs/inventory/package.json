@@ -1,5 +1,5 @@
 {
-  "name": "@apollosolutions/industry-vertical-retail-inventory",
+  "name": "@apollosolutions/retail-supergraph-inventory",
   "version": "1.0.0",
   "main": "index.js",
   "private": true,

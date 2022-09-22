@@ -1,4 +1,6 @@
-app = "apollosolutions--industry-vertical-retail--shipping"
+# fly.toml file generated for apollosolutions--retail-supergraph--shipping on 2022-09-22T12:06:16-07:00
+
+app = "apollosolutions--retail-supergraph--shipping"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []

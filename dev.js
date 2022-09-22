@@ -1,9 +1,9 @@
-import { start as orders } from "@apollosolutions/industry-vertical-retail-orders/server.js";
-import { start as products } from "@apollosolutions/industry-vertical-retail-products/server.js";
-import { start as users } from "@apollosolutions/industry-vertical-retail-users/server.js";
-import { start as inventory } from "@apollosolutions/industry-vertical-retail-inventory/server.js";
-import { start as shipping } from "@apollosolutions/industry-vertical-retail-shipping/server.js";
-import { start as gateway } from "@apollosolutions/industry-vertical-retail-gateway/server.js";
+import { start as orders } from "@apollosolutions/retail-supergraph-orders/server.js";
+import { start as products } from "@apollosolutions/retail-supergraph-products/server.js";
+import { start as users } from "@apollosolutions/retail-supergraph-users/server.js";
+import { start as inventory } from "@apollosolutions/retail-supergraph-inventory/server.js";
+import { start as shipping } from "@apollosolutions/retail-supergraph-shipping/server.js";
+import { start as gateway } from "@apollosolutions/retail-supergraph-gateway/server.js";
 
 (async () => {
   // start all subgraphs

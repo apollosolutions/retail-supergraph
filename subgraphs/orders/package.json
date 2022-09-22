@@ -1,5 +1,5 @@
 {
-  "name": "@apollosolutions/industry-vertical-retail-orders",
+  "name": "@apollosolutions/retail-supergraph-orders",
   "version": "1.0.0",
   "main": "index.js",
   "private": true,

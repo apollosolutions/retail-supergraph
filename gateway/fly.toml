@@ -1,4 +1,6 @@
-app = "apollosolutions--industry-vertical-retail--gateway"
+# fly.toml file generated for apollosolutions--retail-supergraph--gateway on 2022-09-22T12:07:31-07:00
+
+app = "apollosolutions--retail-supergraph--gateway"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
@@ -7,7 +9,7 @@ processes = []
   builder = "heroku/buildpacks:20"
 
 [env]
-  APOLLO_GRAPH_REF = "industry-vertical-retail@prod"
+  APOLLO_GRAPH_REF = "retail-supergraph@prod"
   NODE_ENV = "fly"
   PORT = "8080"
 
