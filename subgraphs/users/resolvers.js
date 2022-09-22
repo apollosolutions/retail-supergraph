@@ -5,7 +5,7 @@ const getUserById = (id) => users.find((it) => it.id === id);
 export const resolvers = {
   Query: {
     viewer(_, __, context) {
-      const userId = context.headers["user-id"];
+      const userId = context.headers["x-user-id"];
 
       if (!userId) {
         return null;
