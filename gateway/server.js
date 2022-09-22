@@ -1,9 +1,15 @@
 import { ApolloGateway, IntrospectAndCompose } from "@apollo/gateway";
 import { ApolloServerPluginLandingPageLocalDefault } from "apollo-server-core";
 import { ApolloServer } from "apollo-server";
+import { DataSourceWithHeaders } from "./header-forwarding.js";
 
 export const start = async (port) => {
-  const gateway = new ApolloGateway(getGatewayConfig());
+  const gateway = new ApolloGateway({
+    ...getGatewayConfig(),
+    buildService: (config) => {
+      return new DataSourceWithHeaders(config);
+    },
+  });
 
   const server = new ApolloServer({
     gateway,
@@ -11,6 +17,9 @@ export const start = async (port) => {
     subscriptions: false,
     cache: "bounded",
     csrfPrevention: true,
+    context: (c) => {
+      return { headers: c.req.headers };
+    },
     plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
   });
 
@@ -20,7 +29,7 @@ export const start = async (port) => {
 };
 
 const getGatewayConfig = () => {
-  if (process.env.NODE_ENV === 'dev') {
+  if (process.env.NODE_ENV === "dev") {
     return {
       supergraphSdl: new IntrospectAndCompose({
         subgraphs: [
@@ -44,17 +53,21 @@ const getGatewayConfig = () => {
             name: "shipping",
             url: "http://localhost:4005/graphql",
           },
-        ]
+        ],
       }),
-      debug: isDebugMode()
+      debug: isDebugMode(),
     };
   } else {
     return {
-      debug: isDebugMode()
+      debug: isDebugMode(),
     };
   }
 };
 
 const isDebugMode = () => {
-  return process.env.NODE_ENV === 'dev' || process.env.GATEWAY_DEBUG === 'true' || false;
+  return (
+    process.env.NODE_ENV === "dev" ||
+    process.env.GATEWAY_DEBUG === "true" ||
+    false
+  );
 };
