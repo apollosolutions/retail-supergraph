@@ -1,5 +1,5 @@
 {
-  "name": "@apollosolutions/industry-vertical-retail-shipping",
+  "name": "@apollosolutions/retail-supergraph-shipping",
   "version": "1.0.0",
   "main": "index.js",
   "private": true,

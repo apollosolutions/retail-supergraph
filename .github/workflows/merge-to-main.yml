@@ -53,38 +53,38 @@ jobs:
 
       - name: Publish inventory subgraph
         run: |
-          rover subgraph publish industry-vertical-retail@prod \
+          rover subgraph publish retail-supergraph@prod \
             --name inventory \
-            --routing-url https://apollosolutions--industry-vertical-retail--inventory.fly.dev \
+            --routing-url https://apollosolutions--retail-supergraph--inventory.fly.dev \
             --schema ./subgraphs/inventory/schema.graphql
 
       - name: Publish orders subgraph
         run: |
-          rover subgraph publish industry-vertical-retail@prod \
+          rover subgraph publish retail-supergraph@prod \
             --name orders \
-            --routing-url https://apollosolutions--industry-vertical-retail--orders.fly.dev \
+            --routing-url https://apollosolutions--retail-supergraph--orders.fly.dev \
             --schema ./subgraphs/orders/schema.graphql
 
       - name: Publish products subgraph
         run: |
-          rover subgraph publish industry-vertical-retail@prod \
+          rover subgraph publish retail-supergraph@prod \
             --name products \
-            --routing-url https://apollosolutions--industry-vertical-retail--products.fly.dev \
+            --routing-url https://apollosolutions--retail-supergraph--products.fly.dev \
             --schema ./subgraphs/products/schema.graphql
 
       - name: Publish shipping subgraph
         run: |
-          rover subgraph publish industry-vertical-retail@prod \
+          rover subgraph publish retail-supergraph@prod \
             --name shipping \
-            --routing-url https://apollosolutions--industry-vertical-retail--shipping.fly.dev \
+            --routing-url https://apollosolutions--retail-supergraph--shipping.fly.dev \
             --schema ./subgraphs/shipping/schema.graphql
 
       - name: Publish users subgraph
         run: |
-          rover subgraph publish industry-vertical-retail@prod \
+          rover subgraph publish retail-supergraph@prod \
             --name users \
-            --routing-url https://apollosolutions--industry-vertical-retail--users.fly.dev \
+            --routing-url https://apollosolutions--retail-supergraph--users.fly.dev \
             --schema ./subgraphs/users/schema.graphql
 
       - name: Publish README
-        run: rover readme publish industry-vertical-retail@prod --file README.md
+        run: rover readme publish retail-supergraph@prod --file README.md
