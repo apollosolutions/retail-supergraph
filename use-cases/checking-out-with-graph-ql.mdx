@@ -62,16 +62,23 @@ schema additions:
 
 ```graphql
 type Mutation {
-    viewer: ViewerMutaitons
+  viewer: ViewerMutaitons
 }
 
 type ViewerMutaitons {
-    checkout(paymentMethodId: String!):
+  checkout(paymentMethodId: String!): CheckoutResult
+  addVariantToCart(variantId: string, quantity: Int): Boolean
+  removeVariantToCart(variantId: string, quantity: Int): Boolean
 }
 
-type SuccessfulCheckout {
-    successful: Boolean
-    orderID: ID
+type ResultWithMessage {
+  successful: Boolean
+  message: String
+}
+
+type CheckoutResult {
+  successful: Boolean
+  orderID: ID
 }
 ```
 
@@ -80,7 +87,7 @@ This all hinges on our cart being set up. Lucky for us the cart is already set u
 query:
 
 ```graphql
-query getCart {
+query GetCart {
   viewer {
     id
     username
@@ -100,3 +107,135 @@ query getCart {
   }
 }
 ```
+
+headers:
+
+```JSON
+{
+  "x-user-id":"user:2"
+}
+```
+
+results:
+
+```JSON
+{
+  "data": {
+    "viewer": {
+      "id": "user:2",
+      "username": "User Two",
+      "cart": {
+        "items": [
+          {
+            "price": 600.25,
+            "product": {
+              "title": "Air Jordan 1 Mid",
+              "description": "Air Jordan 1 Mid is a blue, grey and white sneaker from the iconic jordan brand"
+            },
+            "inventory": {
+              "inStock": false
+            },
+            "size": "10"
+          }
+        ],
+        "subtotal": 600.25
+      }
+    }
+  }
+}
+```
+
+This query grabs all of the nessacary data to display the page before hitting the checkout button. Once the checkout button is hit we will go to a page where we can select our payment method. The flowwing query shows the payment methods for user 2.
+
+query:
+
+```graphql
+query GetViewersPaymentMethods {
+  viewer {
+    paymentMethods {
+      name
+      description
+      type
+      id
+    }
+  }
+}
+```
+
+headers:
+
+```JSON
+{
+  "x-user-id":"user:2"
+}
+```
+
+results:
+
+```JSON
+{
+  "data": {
+    "viewer": {
+      "paymentMethods": [
+        {
+          "name": "User Two's first debit car",
+          "description": null,
+          "type": "DEBIT_CARD",
+          "id": "paymentMethod:3"
+        }
+      ]
+    }
+  }
+}
+```
+
+With this data we should be able to present the user with all of their payment methods, or prompt them to add one. Once a selection is made, we can execute the next mutation to comeplete the checkout and create an order.
+
+mutation:
+
+```graphql
+mutation checkout($paymentMethodId: String!) {
+  viewer {
+    checkout(paymentMethodId:$paymentMethodId) {
+      successful
+      orderID
+  }
+}
+```
+
+headers:
+
+```JSON
+{
+  "x-user-id":"user:2"
+}
+```
+
+variables:
+
+```JSON
+{
+  "paymentMethodId":"paymentMethod:3"
+}
+```
+
+results:
+
+```JSON
+{
+  "data": {
+    "viewer": {
+      "checkout": [
+        {
+          "successful": true,
+          "orderID": "order:7"
+        }
+      ]
+    }
+  }
+}
+```
+
+**note that this will not work in explorer due to the schema not being there**
+
+This small return gives us enought information to tell the viewer that their checkout request was successful and send them to a order page or give them an "ops something went wrong" error message.
