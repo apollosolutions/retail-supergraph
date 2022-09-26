@@ -1,3 +1,14 @@
+# Products Subgraph
+
+This hold the information in regards an user in the system.
+
+Additions could be, but are not limited to:
+
+- Saved addresses
+- Discounts
+- Loyalty programs
+- Recommended items
+
 # gotchas
 
 ### Why is my viewer empty?!
