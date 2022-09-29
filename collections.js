@@ -22,7 +22,8 @@ const parsedFiles = readFiles.map(({ fileName, contents }) => {
       if (
         cont.startsWith("graphql") &&
         cont.toLowerCase().indexOf("type mutation") === -1 &&
-        cont.toLowerCase().indexOf("type query") === -1
+        cont.toLowerCase().indexOf("type query") === -1 &&
+        cont.toLowerCase().indexOf("@key(fields:") === -1
       ) {
         return { body: cont.replace("graphql\n", ""), index };
       }
