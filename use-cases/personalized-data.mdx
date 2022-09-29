@@ -1,0 +1,51 @@
+# Multiple ways to perosonalize datat;
+
+### Viewer and Recommeded Fields
+
+There are many ways to perosonalize data. The most common one is the attachemnt of recomendations and/or different data based on auth headers. If you look at the schmea that is currently wrote for user you will see that it is missing any type of personal data. By making the following additons to either a new subgraph or users subgraph:
+
+schema:
+
+```graphql
+"""
+An user account in our system
+"""
+type User @key(fields: "id") {
+  recomndedProducts: [Product]
+}
+
+type Product @key(fields: "id", resolvable: false) {
+  id: ID!
+}
+```
+
+Now on the surface, this is a very small additon to the schema that doesnt look to to exciting. But this allows for a lot. The fields under the user are ment to be related to that user, that combine with the viewer pattern (graphql version of a `/me` rest route) allows for perosonalized recomendations to users. The "secret sauce" here is the interaction with viewer linking the data to a user.
+
+The one thing that is not great about this is that we are locked into a single recomendation. With the following simple tweaks we can use the same idea for multple recomendations:
+
+schema:
+
+```graphql
+"""
+An user account in our system
+"""
+type User @key(fields: "id") {
+  recomndedProducts(recomendedType: RecomendationType): [Product]
+}
+
+type Product @key(fields: "id", resolvable: false) {
+  id: ID!
+}
+
+enum RecomendationType {
+  RECOMENDED_FOR_YOU
+  RECENTLY_VIEWED
+  DEALS_FOR_YOU
+}
+```
+
+The small addition of a parameter that allows a client to select what type of recomendation it wants is huge. This flexability allows for multiple collections of perosonalized data to be exposed in a consistent way. The change between getting products recommeded for you and the deals for you is the changing of a enum passed to the resolver.
+
+### Other ways to perosonalize data
+
+Any data can be perosonalize but its not recomded that this is doucmented and the structure of the schema is not alterted to accomidate perosonalized data. What this means is if someone was to get a list of the top products, it's the schema doesnt change if you want to reuse that same schema for the top products for a user. The way to trigger these changes is normally something outside of the query, think of thing like headers. The auth headers are the most used headers to change responses. In the case described, the resolver that resolves the data for top products can use the auth headers to change the response or forward them to the service doing that logic.
