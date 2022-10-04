@@ -1,4 +1,4 @@
-# retail-supergraph
+# apollo-retail-supergraph
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/apollosolutions/retail-supergraph?title=Apollo%20Solutions%20-%20Retail%20Supergraph)
 
@@ -15,9 +15,9 @@ a ticket directly in Apollo Studio.
 
 This demo is published to the [Apollo Solutions](https://studio.apollographql.com/org/apollo-solutions/graphs) Studio
 org with the graph
-id [retail-supergraph](https://studio.apollographql.com/graph/retail-supergraph).
+id [retail-supergraph](https://studio.apollographql.com/graph/apollo-retail-supergraph).
 
-You can also view and share the [public variant](https://studio.apollographql.com/public/retail-supergraph/home?variant=prod) to run queries right from Explorer.
+You can also view and share the [public variant](https://studio.apollographql.com/public/apollo-retail-supergraph/home?variant=prod) to run queries right from Explorer.
 
 ## Running in browser
 

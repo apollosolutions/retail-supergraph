@@ -9,7 +9,7 @@ processes = []
   builder = "heroku/buildpacks:20"
 
 [env]
-  APOLLO_GRAPH_REF = "retail-supergraph@prod"
+  APOLLO_GRAPH_REF = "apollo-retail-supergraph@prod"
   NODE_ENV = "fly"
   PORT = "8080"
 
