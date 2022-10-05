@@ -37,10 +37,6 @@ jobs:
         working-directory: ./subgraphs/users
         run: flyctl deploy --remote-only
 
-      - name: Deploy gateway
-        working-directory: ./gateway
-        run: flyctl deploy --remote-only
-
   publish-schemas:
     runs-on: ubuntu-latest
     steps:
