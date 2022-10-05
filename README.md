@@ -1,7 +1,5 @@
 # apollo-retail-supergraph
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/apollosolutions/retail-supergraph?title=Apollo%20Solutions%20-%20Retail%20Supergraph)
-
 Example supergraph for a retail business
 
 ## Disclaimer
