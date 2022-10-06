@@ -68,9 +68,9 @@ type Mutation {
 }
 
 type ViewerMutaitons {
-  checkout(paymentMethodId: String!): CheckoutResult
-  addVariantToCart(variantId: string, quantity: Int): ResultWithMessage
-  removeVariantFromCart(variantId: string, quantity: Int): ResultWithMessage
+  checkout(paymentMethodId: ID!): CheckoutResult
+  addVariantToCart(variantId: ID!, quantity: Int = 1): ResultWithMessage
+  removeVariantFromCart(variantId: ID!, quantity: Int = 1): ResultWithMessage
 }
 
 type ResultWithMessage {
@@ -198,7 +198,7 @@ mutation:
 ```graphql
 mutation checkout($paymentMethodId: String!) {
   viewer {
-    checkout(paymentMethodId:$paymentMethodId) {
+    checkout(paymentMethodId: $paymentMethodId) {
       successful
       orderID
   }
@@ -251,7 +251,7 @@ mutation:
 ```graphql
 mutation addVariantToCart($variantId: String!, $quantity: Int!) {
   viewer {
-    addVariantToCart(variantId:$variantId, quantity: $quantity) {
+    addVariantToCart(variantId: $variantId, quantity: $quantity) {
       successful
       message
   }
@@ -299,7 +299,7 @@ mutation:
 ```graphql
 mutation removeVariantFromCart($variantId: String!, $quantity: Int!) {
   viewer {
-    removeVariantFromCart(variantId:$variantId, quantity: $quantity) {
+    removeVariantFromCart(variantId: $variantId, quantity: $quantity) {
       successful
       message
   }

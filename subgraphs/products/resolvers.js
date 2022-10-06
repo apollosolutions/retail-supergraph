@@ -5,9 +5,9 @@ export const getProductById = (id) => PRODUCTS.find((it) => it.id === id);
 
 export const resolvers = {
   Query: {
-    getProductById: (_, { id }) => (!id ? null : getProductById(id)),
-    getVariantById: (_, { id }) => (!id ? null : getVariantById(id)),
-    allVariants(_, { searchInput }) {
+    product: (_, { id }) => getProductById(id),
+    variant: (_, { id }) => getVariantById(id),
+    searchVariants(_, { searchInput }) {
       if (searchInput?.sizeStartsWith) {
         return VARIANTS.filter((v) =>
           v.size.startsWith(searchInput.sizeStartsWith)
@@ -16,7 +16,7 @@ export const resolvers = {
 
       return VARIANTS;
     },
-    allProducts(_, { searchInput }) {
+    searchProducts(_, { searchInput }) {
       if (searchInput?.titleStartsWith) {
         return PRODUCTS.filter((p) =>
           p.title.startsWith(searchInput.titleStartsWith)
@@ -31,16 +31,16 @@ export const resolvers = {
       return getProductById(ref.id);
     },
     variants(parent, { searchInput }) {
-      const allVariants = getProductById(parent.id).variants.map((it) =>
+      const variants = getProductById(parent.id).variants.map((it) =>
         getVariantById(it.id)
       );
 
       if (searchInput?.sizeStartsWith) {
-        return allVariants.filter((it) =>
+        return variants.filter((it) =>
           it.size.startsWith(searchInput.sizeStartsWith)
         );
       }
-      return allVariants;
+      return variants;
     },
   },
   Variant: {
