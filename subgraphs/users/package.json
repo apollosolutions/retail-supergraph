@@ -8,13 +8,5 @@
   "scripts": {
     "start": "node index.js",
     "dev": "NODE_ENV=dev nodemon index.js"
-  },
-  "dependencies": {
-    "@apollo/subgraph": "^2.1.1",
-    "@apollo/server": "^4.0.0-rc.16",
-    "graphql": "^16.6.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.19"
   }
 }

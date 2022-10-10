@@ -12,6 +12,11 @@
     "test": "start-server-and-test dev http-get://localhost:4000/?query={__typename} health-check",
     "get-collections": "node ./collections.js"
   },
+  "dependencies": {
+    "@apollo/subgraph": "^2.1.1",
+    "@apollo/server": "^4.0.0-rc.16",
+    "graphql": "^16.6.0"
+  },
   "devDependencies": {
     "nodemon": "^2.0.19",
     "start-server-and-test": "^1.14.0"
