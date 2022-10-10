@@ -7,12 +7,12 @@ type Query {
   """
   Get all available products to shop for. Optionally provide some search filters
   """
-  searchProducts(searchInput: ProductSearchInput!): [Product]
+  searchProducts(searchInput: ProductSearchInput! = {}): [Product]
 
   """
   Get all available variants of products to shop for. Optionally provide some search filters
   """
-  searchVariants(searchInput: VariantSearchInput!): [Variant]
+  searchVariants(searchInput: VariantSearchInput! = {}): [Variant]
 
   """
   Get a specific product by id. Useful for the product details page or checkout page
