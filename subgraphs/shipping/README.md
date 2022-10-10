@@ -4,7 +4,7 @@ This hold the information in regards the shipping of orders.
 
 Additions could be, but are not limited to:
 
-- Where is the shipment 
+- Where is the shipment
 - Carrier information (UPS, FEDEX, DHL, etc.)
 - estimated arrival date
 
@@ -12,5 +12,4 @@ Additions could be, but are not limited to:
 
 ### Why is my viewer empty?!
 
-This is based on the header `"x-user-id"`. Pass that header with a number between 1 and 3.
-
+This is based on the header `"x-user-id"`. Pass that header with a value between `user:1` and `user:3`.

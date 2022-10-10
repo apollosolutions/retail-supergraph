@@ -7,9 +7,6 @@ export const resolvers = {
     order(_, { id }) {
       return getOrderById(id);
     },
-    allOrdersForUser(_, { id }) {
-      return orders.filter((it) => it.buyer.id === id);
-    },
   },
   Order: {
     __resolveReference(ref) {

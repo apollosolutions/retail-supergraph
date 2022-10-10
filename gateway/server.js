@@ -1,6 +1,6 @@
 import { ApolloGateway, IntrospectAndCompose } from "@apollo/gateway";
-import { ApolloServerPluginLandingPageLocalDefault } from "apollo-server-core";
-import { ApolloServer } from "apollo-server";
+import { ApolloServer } from "@apollo/server";
+import { startStandaloneServer } from "@apollo/server/standalone";
 import { DataSourceWithHeaders } from "./header-forwarding.js";
 
 export const start = async (port) => {
@@ -14,17 +14,17 @@ export const start = async (port) => {
   const server = new ApolloServer({
     gateway,
     debug: isDebugMode(),
-    subscriptions: false,
     cache: "bounded",
     csrfPrevention: true,
-    context: (c) => {
-      return { headers: c.req.headers };
-    },
-    plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
   });
 
   const serverPort = port ?? process.env.PORT;
-  const { url } = await server.listen(serverPort);
+  const { url } = await startStandaloneServer(server, {
+    listen: { port: serverPort },
+    async context({ req }) {
+      return { headers: req.headers };
+    },
+  });
   console.log(`🚀 Gateway running at ${url}`);
 };
 

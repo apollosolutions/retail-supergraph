@@ -149,30 +149,27 @@ type Query
   """
   Get a specific order by id. Meant to be used for a detailed view of an order
   """
-  order(id: String!): Order @join__field(graph: ORDERS)
-
-  """Get all the orders for a given user."""
-  allOrdersForUser(id: String!): [Order] @join__field(graph: ORDERS)
+  order(id: ID!): Order @join__field(graph: ORDERS)
 
   """
   Get all available products to shop for. Optionally provide some search filters
   """
-  allProducts(searchInput: ProductSearchInput): [Product] @join__field(graph: PRODUCTS)
+  searchProducts(searchInput: ProductSearchInput!): [Product] @join__field(graph: PRODUCTS)
 
   """
   Get all available variants of products to shop for. Optionally provide some search filters
   """
-  allVariants(searchInput: VariantSearchInput): [Variant] @join__field(graph: PRODUCTS)
+  searchVariants(searchInput: VariantSearchInput!): [Variant] @join__field(graph: PRODUCTS)
 
   """
   Get a specific product by id. Useful for the product details page or checkout page
   """
-  getProductById(id: String): Product @join__field(graph: PRODUCTS)
+  product(id: ID!): Product @join__field(graph: PRODUCTS)
 
   """
   Get a specific variant by id. Useful for the product details page or checkout page
   """
-  getVariantById(id: String): Variant @join__field(graph: PRODUCTS)
+  variant(id: ID!): Variant @join__field(graph: PRODUCTS)
 
   """
   Get the current user from our fake "auth" headers

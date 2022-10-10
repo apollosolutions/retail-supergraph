@@ -7,12 +7,7 @@ type Query {
   """
   Get a specific order by id. Meant to be used for a detailed view of an order
   """
-  order(id: String!): Order
-
-  """
-  Get all the orders for a given user.
-  """
-  allOrdersForUser(id: String!): [Order]
+  order(id: ID!): Order
 }
 
 """
