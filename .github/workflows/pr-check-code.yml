@@ -35,6 +35,12 @@ jobs:
           curl -sSL https://rover.apollo.dev/nix/latest | sh
           echo "$HOME/.rover/bin" >> $GITHUB_PATH
 
+      - name: Check discovery subgraph
+        run: |
+          rover subgraph check apollo-retail-supergraph@prod \
+            --name discovery \
+            --schema ./subgraphs/discovery/schema.graphql
+
       - name: Check inventory subgraph
         run: |
           rover subgraph check apollo-retail-supergraph@prod \

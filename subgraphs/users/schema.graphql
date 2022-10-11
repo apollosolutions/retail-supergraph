@@ -20,7 +20,7 @@ type User @key(fields: "id") {
   """
   The users login username
   """
-  username: String
+  username: String!
 
   """
   Saved payment methods that can be used to submit orders
