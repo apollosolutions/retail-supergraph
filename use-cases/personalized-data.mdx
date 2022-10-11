@@ -11,7 +11,7 @@ schema:
 An user account in our system
 """
 type User @key(fields: "id") {
-  recomndedProducts: [Product]
+  recommendedProducts: [Product]
 }
 
 type Product @key(fields: "id", resolvable: false) {
@@ -30,15 +30,15 @@ schema:
 An user account in our system
 """
 type User @key(fields: "id") {
-  recomndedProducts(recomendedType: RecomendationType): [Product]
+  recommendedProducts(recommendedType: RecommendationType): [Product]
 }
 
 type Product @key(fields: "id", resolvable: false) {
   id: ID!
 }
 
-enum RecomendationType {
-  RECOMENDED_FOR_YOU
+enum RecommendationType {
+  RECOMMENDED_FOR_YOU
   RECENTLY_VIEWED
   DEALS_FOR_YOU
 }

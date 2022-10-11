@@ -3,9 +3,9 @@ import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { DataSourceWithHeaders } from "./header-forwarding.js";
 
-export const start = async (port) => {
+export const start = async (port, localSubgraphConfig) => {
   const gateway = new ApolloGateway({
-    ...getGatewayConfig(),
+    ...getGatewayConfig(localSubgraphConfig),
     buildService: (config) => {
       return new DataSourceWithHeaders(config);
     },
@@ -28,32 +28,11 @@ export const start = async (port) => {
   console.log(`🚀 Gateway running at ${url}`);
 };
 
-const getGatewayConfig = () => {
+const getGatewayConfig = (localSubgraphConfig) => {
   if (process.env.NODE_ENV === "dev") {
     return {
       supergraphSdl: new IntrospectAndCompose({
-        subgraphs: [
-          {
-            name: "orders",
-            url: "http://localhost:4001/graphql",
-          },
-          {
-            name: "products",
-            url: "http://localhost:4002/graphql",
-          },
-          {
-            name: "users",
-            url: "http://localhost:4003/graphql",
-          },
-          {
-            name: "inventory",
-            url: "http://localhost:4004/graphql",
-          },
-          {
-            name: "shipping",
-            url: "http://localhost:4005/graphql",
-          },
-        ],
+        subgraphs: localSubgraphConfig,
       }),
       debug: isDebugMode(),
     };
