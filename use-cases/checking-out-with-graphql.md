@@ -1,5 +1,7 @@
 ## Working with a Cart
 
+For the code examples, see the [users subgraph](../subgraphs/users).
+
 ### Checking out
 
 A large part of working in the retail domain is buying something. Once you have selected the thing you want, you will need to pay for it. The complexity of this tends to land outside of the schema. The schmea we have for a viewers cart and payments right now looks something like the following:
@@ -84,7 +86,7 @@ type CheckoutResult {
 }
 ```
 
-This all hinges on our cart being set up. Lucky for us, the cart is already set up for a few users. If you look at the schema, the user id is not supplied as a query variable. That is by design. The user is pulled from a header. In the real world, this would come from your auth provider and be pulled out of a jwt or something similar. In our case, for this demo, the user id is pulled from the header user-id. Using the following queries, we should be able to fetch what is currently in our cart:
+This all hinges on our cart being set up. Lucky for us, the cart is already set up for a few users. If you look at the schema, the user id is not supplied as a query variable. That is by design. The user is pulled from a header. In the real world, this would come from your auth provider and be pulled out of a jwt or something similar. In our case, for this demo, the user id is pulled from the header `x-user-id`. Using the following queries, we should be able to fetch what is currently in our cart:
 
 query:
 
@@ -238,15 +240,13 @@ results:
 }
 ```
 
-**note that this will not work in explorer due to the schema not being there**
+**Note that this will not work in explorer due to the mutation schema not being there**
 
-This small return gives us enough information to tell the viewer that their checkout request was successful and send them to an order page or give them an "ops something went wrong" error message.
+This small return gives us enough information to tell the viewer that their checkout request was successful and send them to an order page or give them an "oops something went wrong" error message.
 
 ### Adding and removing from cart
 
 Before we check out, we need to set up our cart. This includes adding and removing items to our cart. This should be a small mutation to add or remove something from the cart. The following is an example of adding an item to the cart:
-
-mutation:
 
 ```graphql
 mutation addVariantToCart($variantId: String!, $quantity: Int!) {
@@ -332,7 +332,7 @@ results:
       "checkout": [
         {
           "successful": false,
-          "message": "removed to many items"
+          "message": "Removed to many items. Only 1 item was present"
         }
       ]
     }

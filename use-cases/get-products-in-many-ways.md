@@ -1,6 +1,8 @@
 ## Showing a product in multiple ways
 
-The first thing users see on a retail application is a home page. Home pages on most pages are rows and/or columns of products.
+For the code examples, see the [products subgraph](../subgraphs/products).
+
+The first thing users see on a retail application is a home page. Home pages on most retail stores are rows and/or columns of products that users can view.
 
 A sample query that could power a row in the home screen is the following:
 
@@ -44,7 +46,7 @@ response:
 
 This simple approach gives us the least amount of data needed to render a row on the home page and give a link to a product page. With the id you can link to a product page with a relative URL of something like `/p/{res.data.searchProducts[0].id}` or, in this case `/p/product%3A2` ("%3A" is the encoded value for ":").
 
-When clicked, we would go to a PDP (product display page). Using the id in the URL, we can then make a query like the following to supply all the bulk of the PDPs information:
+When clicked, we would go to a PDP (product details page). Using the id in the URL, we can then make a query like the following to supply all the bulk of the PDPs information:
 
 query:
 
@@ -150,8 +152,6 @@ results:
 
 This gives us the dimensions for the size small shirt. The following will tell us if there are any in stock and how many:
 
-query:
-
 ```graphql
 query GetVariantInventoryInformation($variantId: String) {
   variant(id: $variantId) {
@@ -186,4 +186,4 @@ results:
 }
 ```
 
-As you can see from the examples, the schema in this graph can answer multiple questions.
+As you can see from the examples, the schema in this graph can answer multiple questions and support many different iterations of search and details pages without the service teams needing to create unique APIs for each.
