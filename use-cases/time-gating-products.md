@@ -33,8 +33,8 @@ async function getProduct(productId: String): Product {
         // Date comparison is tricky. DO NOT USE THIS IN PRODUCTION. For example only.
         
         if (product.releaseDate) {
-            const now = new Date(Date.now()).toUTCString();
-            const release = new Date(product.releaseDate).toUTCString();
+            const now = Date.now();
+            const release = new Date(product.releaseDate).getTime();
             if (release > now) {
                 return null;
             }
@@ -107,3 +107,4 @@ or
 \*\*The difference between the two is depended on if a non-null field is returned as null.
 
 - The other note to take into account is the effect on lists. The same thing that applies above about linking entities together applies here. The one addition is some graphs draw a line between an empty list and null. This could cause problems when it comes to empty lists, by removing a non released item from the list potentially making it an empty list.
+
