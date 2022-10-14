@@ -2,9 +2,14 @@
 
 For the code examples, see the [users subgraph](../subgraphs/users).
 
-### Checking out
+### Checking out with GraphQL
 
-A large part of working in the retail domain is buying something. Once you have selected the thing you want, you will need to pay for it. The complexity of this tends to land outside of the schema. The schmea we have for a viewers cart and payments right now looks something like the following:
+A large part of working in the retail domain is buying something. Many retail sites implement the concept of a cart which can hold products in a temporary location to purchase later, and allow you to purchase more that on item at once.
+Once you have selected the products you want, you will then need to pay for it. The complexity of implementing a purchasing system tends to land outside the schema and is implemented by calling other services to process credit cards, send invoice orders to warehouses, and start creating shipping labels.
+
+GraphQL can help our clients by giving them focused operations to perform, so they don't have to all implement the logic to call the various services and can instead just focus on creating the best UX flow.
+
+The schema we have for a viewers cart and payments right now looks something like the following:
 
 ```graphql
 type Query {
@@ -86,7 +91,9 @@ type CheckoutResult {
 }
 ```
 
-This all hinges on our cart being set up. Lucky for us, the cart is already set up for a few users. If you look at the schema, the user id is not supplied as a query variable. That is by design. The user is pulled from a header. In the real world, this would come from your auth provider and be pulled out of a jwt or something similar. In our case, for this demo, the user id is pulled from the header `x-user-id`. Using the following queries, we should be able to fetch what is currently in our cart:
+Lucky for us, the cart is already set up for a few users. If you look at the schema, the user id is not supplied as a query variable.
+That is by design. The user is pulled from a header. In the real world, this would come from your auth provider and be pulled out of a JWT or something similar.
+In our case, for this demo, the user id is pulled from the header `x-user-id`. Using the following queries, we are able to fetch what is currently in our cart:
 
 query:
 
@@ -116,7 +123,7 @@ headers:
 
 ```JSON
 {
-  "x-user-id":"user:2"
+  "x-user-id": "user:2"
 }
 ```
 
@@ -149,7 +156,7 @@ results:
 }
 ```
 
-The following query shows the payment methods for user 2. This query grabs all of the nessacary data to display the page before hitting the checkout button. Once the checkout button is hit, we will go to a page where we can select our payment method.
+The following query shows the payment methods for user 2. This query grabs all the necessary data to display the page before hitting the checkout button. Once the checkout button is hit, we will go to a page where we can select our payment method.
 
 query:
 
@@ -170,7 +177,7 @@ headers:
 
 ```JSON
 {
-  "x-user-id":"user:2"
+  "x-user-id": "user:2"
 }
 ```
 
@@ -211,7 +218,7 @@ headers:
 
 ```JSON
 {
-  "x-user-id":"user:2"
+  "x-user-id": "user:2"
 }
 ```
 
@@ -219,7 +226,7 @@ variables:
 
 ```JSON
 {
-  "paymentMethodId":"paymentMethod:3"
+  "paymentMethodId": "paymentMethod:3"
 }
 ```
 
@@ -262,7 +269,7 @@ headers:
 
 ```JSON
 {
-  "x-user-id":"user:2"
+  "x-user-id": "user:2"
 }
 ```
 
@@ -270,7 +277,7 @@ variables:
 
 ```JSON
 {
-  "variantId":"variant:1",
+  "variantId": "variant:1",
   "quantity": 1
 }
 ```
@@ -310,7 +317,7 @@ headers:
 
 ```JSON
 {
-  "x-user-id":"user:2"
+  "x-user-id": "user:2"
 }
 ```
 
@@ -318,7 +325,7 @@ variables:
 
 ```JSON
 {
-  "variantId":"variant:1",
+  "variantId": "variant:1",
   "quantity": 3
 }
 ```
