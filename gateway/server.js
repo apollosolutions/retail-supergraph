@@ -1,6 +1,7 @@
 import { ApolloGateway, IntrospectAndCompose } from "@apollo/gateway";
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
+import { ApolloServerPluginLandingPageLocalDefault } from "@apollo/server/plugin/landingPage/default";
 import { DataSourceWithHeaders } from "./header-forwarding.js";
 
 export const start = async (port, localSubgraphConfig) => {
@@ -16,6 +17,7 @@ export const start = async (port, localSubgraphConfig) => {
     debug: isDebugMode(),
     cache: "bounded",
     csrfPrevention: true,
+    plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })]
   });
 
   const serverPort = port ?? process.env.PORT;
