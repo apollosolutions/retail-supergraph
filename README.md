@@ -11,7 +11,7 @@ a ticket directly in Apollo Studio.
 
 ## View the schema
 
-This demo is published to the [Apollo Solutions](https://studio.apollographql.com/org/apollo-solutions/graphs) GraphOS
+This demo is published to the [Apollo Solutions](https://studio.apollographql.com/org/apollo-solutions) GraphOS
 org with the graph
 id [financial-supergraph](https://studio.apollographql.com/graph/apollo-financial-supergraph).
 
