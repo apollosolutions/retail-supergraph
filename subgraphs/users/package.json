@@ -1,5 +1,5 @@
 {
-  "name": "@apollosolutions/retail-supergraph-users",
+  "name": "@apollosolutions/financial-supergraph-users",
   "version": "1.0.0",
   "main": "index.js",
   "private": true,

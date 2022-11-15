@@ -10,116 +10,6 @@ env:
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
 jobs:
-  subgraph-discovery:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-      - name: Install Rover
-        run: |
-          curl -sSL https://rover.apollo.dev/nix/latest | sh
-          echo "$HOME/.rover/bin" >> $GITHUB_PATH
-
-      - name: Deploy to fly
-        working-directory: ./subgraphs/discovery
-        run: flyctl deploy --remote-only
-
-      - name: Publish subgraph schema
-        working-directory: ./subgraphs/discovery
-        run: |
-          rover subgraph publish apollo-retail-supergraph@prod \
-            --name discovery \
-            --routing-url https://apollosolutions--retail-supergraph--discovery.fly.dev \
-            --schema schema.graphql
-
-  subgraph-inventory:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-      - name: Install Rover
-        run: |
-          curl -sSL https://rover.apollo.dev/nix/latest | sh
-          echo "$HOME/.rover/bin" >> $GITHUB_PATH
-
-      - name: Deploy to fly
-        working-directory: ./subgraphs/inventory
-        run: flyctl deploy --remote-only
-
-      - name: Publish subgraph schema
-        working-directory: ./subgraphs/inventory
-        run: |
-          rover subgraph publish apollo-retail-supergraph@prod \
-            --name inventory \
-            --routing-url https://apollosolutions--retail-supergraph--inventory.fly.dev \
-            --schema schema.graphql
-
-  subgraph-orders:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-      - name: Install Rover
-        run: |
-          curl -sSL https://rover.apollo.dev/nix/latest | sh
-          echo "$HOME/.rover/bin" >> $GITHUB_PATH
-
-      - name: Deploy to fly
-        working-directory: ./subgraphs/orders
-        run: flyctl deploy --remote-only
-
-      - name: Publish subgraph schema
-        working-directory: ./subgraphs/orders
-        run: |
-          rover subgraph publish apollo-retail-supergraph@prod \
-            --name orders \
-            --routing-url https://apollosolutions--retail-supergraph--orders.fly.dev \
-            --schema schema.graphql
-
-  subgraph-products:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-      - name: Install Rover
-        run: |
-          curl -sSL https://rover.apollo.dev/nix/latest | sh
-          echo "$HOME/.rover/bin" >> $GITHUB_PATH
-
-      - name: Deploy to fly
-        working-directory: ./subgraphs/products
-        run: flyctl deploy --remote-only
-
-      - name: Publish subgraph schema
-        working-directory: ./subgraphs/products
-        run: |
-          rover subgraph publish apollo-retail-supergraph@prod \
-            --name products \
-            --routing-url https://apollosolutions--retail-supergraph--products.fly.dev \
-            --schema schema.graphql
-
-  subgraph-shipping:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-      - name: Install Rover
-        run: |
-          curl -sSL https://rover.apollo.dev/nix/latest | sh
-          echo "$HOME/.rover/bin" >> $GITHUB_PATH
-
-      - name: Deploy to fly
-        working-directory: ./subgraphs/shipping
-        run: flyctl deploy --remote-only
-
-      - name: Publish subgraph schema
-        working-directory: ./subgraphs/shipping
-        run: |
-          rover subgraph publish apollo-retail-supergraph@prod \
-            --name shipping \
-            --routing-url https://apollosolutions--retail-supergraph--shipping.fly.dev \
-            --schema schema.graphql
-
   subgraph-users:
     runs-on: ubuntu-latest
     steps:
@@ -137,9 +27,9 @@ jobs:
       - name: Publish subgraph schema
         working-directory: ./subgraphs/users
         run: |
-          rover subgraph publish apollo-retail-supergraph@prod \
+          rover subgraph publish apollo-financial-supergraph@prod \
             --name users \
-            --routing-url https://apollosolutions--retail-supergraph--users.fly.dev \
+            --routing-url https://apollosolutions--financial-supergraph--users.fly.dev \
             --schema schema.graphql
 
   publish-README:
@@ -153,4 +43,4 @@ jobs:
           echo "$HOME/.rover/bin" >> $GITHUB_PATH
 
       - name: Publish README
-        run: rover readme publish apollo-retail-supergraph@prod --file README.md
+        run: rover readme publish apollo-financial-supergraph@prod --file README.md
