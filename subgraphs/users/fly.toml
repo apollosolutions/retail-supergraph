@@ -1,12 +1,9 @@
-# fly.toml file generated for apollosolutions--retail-supergraph--users on 2022-09-22T12:07:07-07:00
+# fly.toml file generated for apollosolutions--financial-supergraph--users on 2022-11-15T15:42:08-08:00
 
-app = "apollosolutions--retail-supergraph--users"
+app = "apollosolutions--financial-supergraph--users"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
-
-[build]
-  builder = "heroku/buildpacks:20"
 
 [env]
   NODE_ENV = "fly"

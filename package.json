@@ -1,5 +1,5 @@
 {
-  "name": "@apollosolutions/retail-supergraph",
+  "name": "@apollosolutions/financial-supergraph",
   "license": "MIT",
   "type": "module",
   "workspaces": [

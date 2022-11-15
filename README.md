@@ -1,6 +1,6 @@
-# apollo-retail-supergraph
+# apollo-financial-supergraph
 
-Example supergraph for a retail business
+Example supergraph for a financial or banking business
 
 ## Disclaimer
 The code in this repository is experimental and has been provided for reference purposes only. Community feedback is
@@ -11,15 +11,15 @@ a ticket directly in Apollo Studio.
 
 ## View the schema
 
-This demo is published to the [Apollo Solutions](https://studio.apollographql.com/org/apollo-solutions/graphs) Studio
+This demo is published to the [Apollo Solutions](https://studio.apollographql.com/org/apollo-solutions/graphs) GraphOS
 org with the graph
-id [retail-supergraph](https://studio.apollographql.com/graph/apollo-retail-supergraph).
+id [financial-supergraph](https://studio.apollographql.com/graph/apollo-financial-supergraph).
 
-You can also view and share the [public variant](https://studio.apollographql.com/public/apollo-retail-supergraph/home?variant=prod) to run queries right from Explorer.
+You can also view and share the [public variant](https://studio.apollographql.com/public/apollo-financial-supergraph/home?variant=prod) to run queries right from Explorer.
 
 ## Running in browser
 
-Using [Stackblitz](https://stackblitz.com/github/apollosolutions/retail-supergraph?title=Apollo%20Solutions%20-%20Retail%20Supergraph) you can run a local instance of this supergraph without cloning the repo.
+Using [Stackblitz](https://stackblitz.com/github/apollosolutions/financial-supergraph?title=Apollo%20Solutions%20-%20Financial%20Supergraph) you can run a local instance of this supergraph without cloning the repo.
 
 ## Running locally
 
