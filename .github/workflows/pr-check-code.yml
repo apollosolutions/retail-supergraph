@@ -35,6 +35,10 @@ jobs:
           curl -sSL https://rover.apollo.dev/nix/latest | sh
           echo "$HOME/.rover/bin" >> $GITHUB_PATH
 
+      - name: Rover whoami
+        run: |
+          rover config whoami
+
       - name: Check users subgraph
         run: |
           rover subgraph check apollo-financial-supergraph@prod \
