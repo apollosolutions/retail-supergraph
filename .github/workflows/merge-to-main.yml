@@ -7,14 +7,16 @@ on:
 env:
   APOLLO_KEY: ${{ secrets.APOLLO_KEY }}
   APOLLO_VCS_COMMIT: ${{ github.event.pull_request.head.sha }}
-  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+  FLY_API_TOKEN: ${{ secrets.SHANES_FLY_API_TOKEN }}
 
 jobs:
   subgraph-users:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - uses: superfly/flyctl-actions/setup-flyctl@master
+
       - name: Install Rover
         run: |
           curl -sSL https://rover.apollo.dev/nix/latest | sh
