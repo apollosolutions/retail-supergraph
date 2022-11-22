@@ -37,7 +37,7 @@ jobs:
 
       - name: Rover whoami
         run: |
-          rover config whoami
+          rover --version
 
       - name: Check users subgraph
         run: |
