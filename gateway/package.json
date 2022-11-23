@@ -10,6 +10,6 @@
     "dev": "NODE_ENV=dev nodemon index.js"
   },
   "dependencies": {
-    "@apollo/gateway": "^2.1.3"
+    "@apollo/gateway": "^2.2.1"
   }
 }

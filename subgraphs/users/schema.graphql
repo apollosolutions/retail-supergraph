@@ -1,7 +1,26 @@
 # noinspection GraphQLTypeRedefinition
 
 extend schema
-  @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
+  @link(url: "https://specs.apollo.dev/federation/v2.1", import: ["@key"])
+
+"""
+Require specific access to run resolvers of a field or object.
+Default to requiring admin permissions to avoid accidental exposure.
+If no auth is defined, it is open to all.
+The request role is parsed from the "x-user-id" header value.
+"""
+directive @auth(requires: Role = ADMIN) on OBJECT | FIELD_DEFINITION
+
+"""
+Used in the @auth directive to do directive-based auth control.
+See the docs for @auth for more info.
+"""
+enum Role {
+  ADMIN
+  PARTNER
+  USER
+  UNKNOWN
+}
 
 type Query {
   users: [User]
@@ -9,5 +28,5 @@ type Query {
 
 type User @key(fields: "id") {
   id: ID!
-  name: String
+  name: String @auth(requires: USER)
 }

@@ -13,8 +13,7 @@
     "get-collections": "node ./collections.js"
   },
   "dependencies": {
-    "@apollo/subgraph": "^2.1.3",
-    "@apollo/server": "^4.1.0",
+    "@apollo/server": "^4.1.1",
     "graphql": "^16.6.0"
   },
   "devDependencies": {

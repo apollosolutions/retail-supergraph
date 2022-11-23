@@ -6,14 +6,17 @@ import { resolvers } from "./resolvers.js";
 import { readFileSync } from "fs";
 import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
+import { authDirectiveTransformer } from "./auth.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const typeDefs = parse(
+const sdlTypeDefs = parse(
   readFileSync(resolve(__dirname, "schema.graphql"), "utf8")
 );
-const schema = buildSubgraphSchema([{ typeDefs, resolvers }]);
+const schema = buildSubgraphSchema([
+  { typeDefs: sdlTypeDefs, resolvers }
+]);
 const server = new ApolloServer({
-  schema,
+  schema: authDirectiveTransformer(schema),
   cache: "bounded",
   csrfPrevention: true,
 });

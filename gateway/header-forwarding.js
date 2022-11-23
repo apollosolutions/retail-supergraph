@@ -1,5 +1,8 @@
 import { RemoteGraphQLDataSource } from "@apollo/gateway";
 
+/**
+ * Forward all headers that start with "x" to subgraphs
+ */
 export class DataSourceWithHeaders extends RemoteGraphQLDataSource {
   async willSendRequest({ request, context }) {
     const headers = context?.headers || {};
