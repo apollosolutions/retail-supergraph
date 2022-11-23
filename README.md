@@ -1,6 +1,6 @@
 # apollo-retail-supergraph
 
-Example supergraph for a retail business
+Example supergraph for a retail business.
 
 ## Disclaimer
 The code in this repository is experimental and has been provided for reference purposes only. Community feedback is
@@ -10,33 +10,14 @@ issue on this repository, [contact Apollo](https://www.apollographql.com/contact
 a ticket directly in Apollo Studio.
 
 ## View the schema
-
 This demo is published to the [Apollo Solutions](https://studio.apollographql.com/org/apollo-solutions/graphs) Studio
 org with the graph
 id [retail-supergraph](https://studio.apollographql.com/graph/apollo-retail-supergraph).
 
 You can also view and share the [public variant](https://studio.apollographql.com/public/apollo-retail-supergraph/home?variant=prod) to run queries right from Explorer.
 
-## Running in browser
+## Local Development
+If you want to run this supergraph locally you can clone the [GitHub repo](https://github.com/apollosolutions/retail-supergraph) and follow the instructions in [DEV.md](https://github.com/apollosolutions/retail-supergraph/blob/main/DEV.md)
 
-Using [Stackblitz](https://stackblitz.com/github/apollosolutions/retail-supergraph?title=Apollo%20Solutions%20-%20Retail%20Supergraph) you can run a local instance of this supergraph without cloning the repo.
-
-## Running locally
-
-### Software requirements
-
-* Install the latest LTS version of Node (preferably using [nvm](https://github.com/nvm-sh/nvm))
-
-### Install dependencies
-
-```shell
-npm install
-```
-
-### Running the subgraphs and gateway
-
-Run the subgraphs and gateway, which use [Apollo Server](https://www.apollographql.com/docs/apollo-server/), using `npm`
-
-```shell
-npm run dev
-```
+## Use Cases
+If you would like to run some sample operations, checkout the public [Operation Collections](https://studio.apollographql.com/public/apollo-retail-supergraph/explorer?collectionId=9da0ba4b-12d1-4ebb-89bb-bed4a4d476ff&focusCollectionId=9da0ba4b-12d1-4ebb-89bb-bed4a4d476ff&variant=prod) in Explorer.
