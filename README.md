@@ -10,7 +10,7 @@ issue on this repository, [contact Apollo](https://www.apollographql.com/contact
 a ticket directly in Apollo Studio.
 
 ## View the schema
-This demo is published to the [Apollo Solutions](https://studio.apollographql.com/org/apollo-solutions/graphs) Studio
+This demo is published to the [Apollo Solutions](https://studio.apollographql.com/org/apollo-solutions) Studio
 org with the graph
 id [retail-supergraph](https://studio.apollographql.com/graph/apollo-retail-supergraph).
 
