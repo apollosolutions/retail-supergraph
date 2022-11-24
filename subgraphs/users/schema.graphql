@@ -28,11 +28,6 @@ type User @key(fields: "id") {
   paymentMethods: [PaymentMethod]
 
   """
-  The user's active cart session. Once the cart items have been purchases, they transition to an Order
-  """
-  cart: Cart
-
-  """
   The users previous purchases
   """
   orders(filters: OrderFilters): [Order]
@@ -72,25 +67,6 @@ enum PaymentType {
   BANK_ACCOUNT
 }
 
-"""
-An user's saved cart session. Only one cart can be active at a time
-"""
-type Cart {
-  """
-  Items saved in the cart session
-  """
-  items: [Variant]
-
-  """
-  The current total of all the items in the cart, before taxes and shipping
-  """
-  subtotal: Float
-}
-
 type Order @key(fields: "id", resolvable: false) {
-  id: ID!
-}
-
-type Variant @key(fields: "id", resolvable: false) {
   id: ID!
 }

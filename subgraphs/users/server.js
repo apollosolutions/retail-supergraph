@@ -26,5 +26,5 @@ export const start = async (port) => {
       return { headers: req.headers };
     },
   });
-  console.log(`👥 Users subgraph running at ${url}`);
+  console.log(`Users subgraph running at ${url}`);
 };
