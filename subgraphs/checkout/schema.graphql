@@ -1,0 +1,52 @@
+# noinspection GraphQLTypeRedefinition
+
+extend schema
+  @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
+
+type Mutation {
+  viewer: ViewerMutations
+}
+
+type ViewerMutations {
+  checkout(paymentMethodId: ID!): CheckoutResult
+  addVariantToCart(variantId: ID!, quantity: Int = 1): ResultWithMessage
+  removeVariantFromCart(variantId: ID!, quantity: Int = 1): ResultWithMessage
+}
+
+type ResultWithMessage {
+  successful: Boolean
+  message: String
+}
+
+type CheckoutResult {
+  successful: Boolean
+  orderID: ID
+}
+
+type User @key(fields: "id") {
+  id: ID!
+
+  """
+  The user's active cart session. Once the cart items have been purchases, they transition to an Order
+  """
+  cart: Cart
+}
+
+"""
+An user's saved cart session. Only one cart can be active at a time
+"""
+type Cart {
+  """
+  Items saved in the cart session
+  """
+  items: [Variant]
+
+  """
+  The current total of all the items in the cart, before taxes and shipping
+  """
+  subtotal: Float
+}
+
+type Variant @key(fields: "id", resolvable: false) {
+  id: ID!
+}

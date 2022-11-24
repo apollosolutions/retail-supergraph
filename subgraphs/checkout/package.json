@@ -1,0 +1,17 @@
+{
+  "name": "@apollosolutions/retail-supergraph-checkout",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "NODE_ENV=dev nodemon index.js"
+  },
+  "dependencies": {
+    "@apollo/subgraph": "^2.2.1",
+    "@apollo/server": "^4.2.1",
+    "graphql": "^16.6.0"
+  }
+}

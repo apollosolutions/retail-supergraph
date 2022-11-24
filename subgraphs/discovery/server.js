@@ -26,5 +26,5 @@ export const start = async (port) => {
       return { headers: req.headers };
     },
   });
-  console.log(`🔍 Discovery subgraph running at ${url}`);
+  console.log(`Discovery subgraph running at ${url}`);
 };

@@ -26,5 +26,5 @@ export const start = async (port) => {
       return { headers: req.headers };
     },
   });
-  console.log(`Shipping subgraph running at ${url}`);
+  console.log(`Checkout subgraph running at ${url}`);
 };

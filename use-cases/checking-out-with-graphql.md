@@ -1,6 +1,6 @@
 ## Working with a Cart
 
-For the code examples, see the [users subgraph](../subgraphs/users).
+For the code examples, see the [users subgraph](../subgraphs/users) and [checkout subgraph](../subgraphs/checkout).
 
 ### Checking out with GraphQL
 
@@ -247,7 +247,7 @@ results:
 }
 ```
 
-**Note that this will not work in explorer due to the mutation schema not being there**
+**Note that this mutation can be made but the example server does not store any state, so it just returns a mock response**
 
 This small return gives us enough information to tell the viewer that their checkout request was successful and send them to an order page or give them an "oops something went wrong" error message.
 

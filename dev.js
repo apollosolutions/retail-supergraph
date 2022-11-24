@@ -1,3 +1,4 @@
+import { start as checkout } from "@apollosolutions/retail-supergraph-checkout/server.js";
 import { start as discovery } from "@apollosolutions/retail-supergraph-discovery/server.js";
 import { start as inventory } from "@apollosolutions/retail-supergraph-inventory/server.js";
 import { start as orders } from "@apollosolutions/retail-supergraph-orders/server.js";
@@ -8,34 +9,39 @@ import { start as gateway } from "@apollosolutions/retail-supergraph-gateway/ser
 
 const LOCAL_SUBGRAPH_CONFIG = [
   {
-    name: "discovery",
+    name: "checkout",
     port: 4001,
     url: `http://localhost:4001/graphql`,
   },
   {
-    name: "inventory",
+    name: "discovery",
     port: 4002,
     url: `http://localhost:4002/graphql`,
   },
   {
-    name: "orders",
+    name: "inventory",
     port: 4003,
     url: `http://localhost:4003/graphql`,
   },
   {
-    name: "products",
+    name: "orders",
     port: 4004,
     url: `http://localhost:4004/graphql`,
   },
   {
-    name: "shipping",
+    name: "products",
     port: 4005,
     url: `http://localhost:4005/graphql`,
   },
   {
-    name: "users",
+    name: "shipping",
     port: 4006,
     url: `http://localhost:4006/graphql`,
+  },
+  {
+    name: "users",
+    port: 4007,
+    url: `http://localhost:4007/graphql`,
   },
 ];
 
@@ -45,6 +51,7 @@ const getLocalPort = (subgraphName) =>
 (async () => {
   // start all subgraphs
   await Promise.all([
+    checkout(getLocalPort('checkout')),
     discovery(getLocalPort('discovery')),
     inventory(getLocalPort('inventory')),
     orders(getLocalPort('orders')),
