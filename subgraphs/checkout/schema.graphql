@@ -1,7 +1,7 @@
 # noinspection GraphQLTypeRedefinition
 
 extend schema
-  @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
+  @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key", "@external", "@requires"])
 
 type Mutation {
   viewer: ViewerMutations
@@ -35,7 +35,13 @@ type User @key(fields: "id") {
 """
 An user's saved cart session. Only one cart can be active at a time
 """
-type Cart {
+type Cart @key(fields: "userId") {
+
+  """
+  Each user can only have one cart so the ID is the same as the user ID
+  """
+  userId: ID!
+
   """
   Items saved in the cart session
   """
@@ -44,9 +50,10 @@ type Cart {
   """
   The current total of all the items in the cart, before taxes and shipping
   """
-  subtotal: Float
+  subtotal: Float @requires(fields: "items { price }")
 }
 
 type Variant @key(fields: "id", resolvable: false) {
   id: ID!
+  price: Float! @external
 }
