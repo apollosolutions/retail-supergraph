@@ -1,10 +1,18 @@
-import { users } from "./data.js";
+import { activeCarts } from "./data.js";
 
-const getUserById = (id) => users.find((it) => it.id === id);
+const getCartByUserId = (id) => activeCarts.find((it) => it.userId === id);
 
 export const resolvers = {
   User: {
-    cart: (parent) => getUserById(parent.id).cart
+    cart: (parent) => getCartByUserId(parent.id)
+  },
+  Cart: {
+    subtotal: (parent) => {
+      const items = parent.items ?? [];
+      return items
+        ?.map(item => item.price ?? 0)
+        ?.reduce((total, price) => total + price, 0);
+    }
   },
   Mutation: {
     viewer: () => ({})

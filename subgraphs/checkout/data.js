@@ -1,20 +1,14 @@
-export const users = [
+export const activeCarts = [
   {
-    id: "user:1",
-    cart: {
-      items: [{ id: "variant:1" }, { id: "variant:2" }],
-      subtotal: 1200.5,
-    }
+    userId: "user:1",
+    items: [{ id: "variant:1" }, { id: "variant:2" }],
   },
   {
-    id: "user:2",
-    cart: {
-      items: [{ id: "variant:1" }],
-      subtotal: 600.25,
-    }
+    userId: "user:2",
+    items: [{ id: "variant:1" }],
   },
   {
-    id: "user:3",
-    cart: {}
+    userId: "user:3",
+    items: []
   },
 ];
