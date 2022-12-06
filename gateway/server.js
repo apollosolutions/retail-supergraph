@@ -34,7 +34,10 @@ const getGatewayConfig = (localSubgraphConfig) => {
   if (process.env.NODE_ENV === "dev") {
     return {
       supergraphSdl: new IntrospectAndCompose({
-        subgraphs: localSubgraphConfig,
+        subgraphs: localSubgraphConfig.map(it => ({
+          name: it.name,
+          url: `http://localhost:${it.port}/graphql`
+        })),
       }),
       debug: isDebugMode(),
     };
