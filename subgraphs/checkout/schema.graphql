@@ -4,10 +4,10 @@ extend schema
   @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key", "@external", "@requires"])
 
 type Mutation {
-  viewer: ViewerMutations
+  cart: CartMutations
 }
 
-type ViewerMutations {
+type CartMutations {
   checkout(paymentMethodId: ID!): CheckoutResult
   addVariantToCart(variantId: ID!, quantity: Int = 1): ResultWithMessage
   removeVariantFromCart(variantId: ID!, quantity: Int = 1): ResultWithMessage
@@ -53,7 +53,7 @@ type Cart @key(fields: "userId") {
   subtotal: Float @requires(fields: "items { price }")
 }
 
-type Variant @key(fields: "id", resolvable: false) {
+type Variant @key(fields: "id") {
   id: ID!
   price: Float! @external
 }

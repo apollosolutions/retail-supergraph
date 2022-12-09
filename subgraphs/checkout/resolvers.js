@@ -15,9 +15,9 @@ export const resolvers = {
     }
   },
   Mutation: {
-    viewer: () => ({})
+    cart: () => ({})
   },
-  ViewerMutations: {
+  CartMutations: {
     checkout: () => ({
       successful: true,
       orderID: 'mockOderId123'
