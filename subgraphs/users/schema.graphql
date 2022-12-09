@@ -8,7 +8,7 @@ type Query {
   Get the current user from our fake "auth" headers
   Set the "x-user-id" header to the user id.
   """
-  viewer: User
+  user: User
 }
 
 """
