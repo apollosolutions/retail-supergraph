@@ -12,11 +12,7 @@ const typeDefs = parse(
   readFileSync(resolve(__dirname, "schema.graphql"), "utf8")
 );
 const schema = buildSubgraphSchema([{ typeDefs, resolvers }]);
-const server = new ApolloServer({
-  schema,
-  cache: "bounded",
-  csrfPrevention: true,
-});
+const server = new ApolloServer({ schema });
 
 export const start = async (port) => {
   const serverPort = port ?? process.env.PORT;
