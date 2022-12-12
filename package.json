@@ -9,12 +9,14 @@
   "scripts": {
     "dev": "NODE_ENV=dev nodemon dev.js",
     "health-check": "curl -H 'content-type: application/json' http://localhost:4000/graphql?query=%7B__typename%7D",
-    "test": "start-server-and-test dev http-get://localhost:4000/?query={__typename} health-check",
-    "get-collections": "node ./collections.js"
+    "test": "npm run test:compile && npm run test:runtime",
+    "test:runtime": "start-server-and-test dev http-get://localhost:4000/?query={__typename} health-check",
+    "test:compile": "tsc"
   },
   "devDependencies": {
     "nodemon": "^2.0.20",
-    "start-server-and-test": "^1.15.2"
+    "start-server-and-test": "^1.15.2",
+    "typescript": "^4.9.4"
   },
   "nodemonConfig": {
     "ext": "js,json,graphql"
