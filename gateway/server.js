@@ -14,9 +14,7 @@ export const start = async (port, localSubgraphConfig) => {
 
   const server = new ApolloServer({
     gateway,
-    debug: isDebugMode(),
-    cache: "bounded",
-    csrfPrevention: true,
+    includeStacktraceInErrorResponses: isDebugMode(),
     plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })]
   });
 
