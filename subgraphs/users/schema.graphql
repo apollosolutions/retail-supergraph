@@ -30,22 +30,12 @@ type User @key(fields: "id") {
   """
   The users previous purchases
   """
-  orders(filters: OrderFilters): [Order]
+  orders: [Order]
 
   """
   The users current saved shipping address
   """
   shippingAddress: String
-}
-
-"""
-Search filters for when showing an users previous purchases
-"""
-input OrderFilters {
-  orderId: ID!
-  priceHigh: Float
-  priceLow: Float
-  itemsInOrder: Int
 }
 
 """
