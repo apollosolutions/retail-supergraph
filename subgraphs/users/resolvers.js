@@ -1,5 +1,6 @@
 import { users } from "./data.js";
 import { GraphQLError } from "graphql";
+import { v4 as uuidv4 } from "uuid";
 
 const getUserById = (id) => users.find((it) => it.id === id);
 
@@ -20,5 +21,6 @@ export const resolvers = {
     __resolveReference(ref) {
       return getUserById(ref.id);
     },
+    previousSessions: () => [uuidv4(), uuidv4()]
   },
 };
