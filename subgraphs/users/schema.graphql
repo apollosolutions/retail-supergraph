@@ -23,6 +23,11 @@ type User @key(fields: "id") {
   username: String!
 
   """
+  Get the list of last session id of user activity
+  """
+  previousSessions: [ID!]
+
+  """
   Saved payment methods that can be used to submit orders
   """
   paymentMethods: [PaymentMethod]
