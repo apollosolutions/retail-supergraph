@@ -6,19 +6,22 @@ const PRODUCT_IDS = [
   { id: "product:5" },
 ];
 
+// Probably better to have some machine learning process here,
+// but we will simulate by randomly returning products
+const getRandomProductsExcludingOne = (productId) =>
+  PRODUCT_IDS
+    .filter(product => product.id !== productId)
+    .filter(() => Math.random() < 0.7);
+
 export const resolvers = {
   User: {
-    recommendedProducts: () => {
-      // Probably better to have some machine learning process here,
-      // but we will simulate by randomly returning products
-      return PRODUCT_IDS.filter(() => Math.random() < 0.5)
+    recommendedProducts: (_, args) => {
+      return getRandomProductsExcludingOne(args.productId);
     }
   },
   Product: {
-    recommendedProducts: () => {
-      // Probably better to have some machine learning process here,
-      // but we will simulate by randomly returning products
-      return PRODUCT_IDS.filter(() => Math.random() < 0.5)
+    recommendedProducts: (parent) => {
+      return getRandomProductsExcludingOne(parent.id);
     }
   }
 };
