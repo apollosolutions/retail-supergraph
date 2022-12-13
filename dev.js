@@ -3,6 +3,7 @@ import { start as discovery } from "@apollosolutions/retail-supergraph-discovery
 import { start as inventory } from "@apollosolutions/retail-supergraph-inventory/server.js";
 import { start as orders } from "@apollosolutions/retail-supergraph-orders/server.js";
 import { start as products } from "@apollosolutions/retail-supergraph-products/server.js";
+import { start as reviews } from "@apollosolutions/retail-supergraph-reviews/server.js";
 import { start as shipping } from "@apollosolutions/retail-supergraph-shipping/server.js";
 import { start as users } from "@apollosolutions/retail-supergraph-users/server.js";
 import { start as gateway } from "@apollosolutions/retail-supergraph-gateway/server.js";
@@ -29,12 +30,16 @@ const LOCAL_SUBGRAPH_CONFIG = [
     port: 4005
   },
   {
-    name: "shipping",
+    name: "reviews",
     port: 4006
   },
   {
-    name: "users",
+    name: "shipping",
     port: 4007
+  },
+  {
+    name: "users",
+    port: 4008
   }
 ];
 
@@ -49,6 +54,7 @@ const getLocalPort = (subgraphName) =>
     inventory(getLocalPort('inventory')),
     orders(getLocalPort('orders')),
     products(getLocalPort('products')),
+    reviews(getLocalPort('reviews')),
     shipping(getLocalPort('shipping')),
     users(getLocalPort('users')),
   ]);
