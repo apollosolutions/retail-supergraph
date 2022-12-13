@@ -8,7 +8,7 @@ type User @key(fields: "id") {
   id: ID!
 
   """
-  Suggest products for this user
+  Suggest products for this user, optionally pass in a specific product id to compare too
   """
   recommendedProducts(productId: ID = null): [Product]
 }
@@ -17,7 +17,7 @@ type Product @key(fields: "id") {
   id: ID!
 
   """
-  Related products for this product, may also
+  Related products for this product, the user can be fetched from the `x-user-id` header
   """
   recommendedProducts: [Product]
 }
