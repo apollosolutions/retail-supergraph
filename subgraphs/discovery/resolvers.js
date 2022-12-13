@@ -14,4 +14,11 @@ export const resolvers = {
       return PRODUCT_IDS.filter(() => Math.random() < 0.5)
     }
   },
+  Product: {
+    recommendedProducts: () => {
+      // Probably better to have some machine learning process here,
+      // but we will simulate by randomly returning products
+      return PRODUCT_IDS.filter(() => Math.random() < 0.5)
+    }
+  }
 };

@@ -10,9 +10,14 @@ type User @key(fields: "id") {
   """
   Suggest products for this user
   """
-  recommendedProducts: [Product]
+  recommendedProducts(productId: ID = null): [Product]
 }
 
-type Product @key(fields: "id", resolvable: false) {
+type Product @key(fields: "id") {
   id: ID!
+
+  """
+  Related products for this product, may also
+  """
+  recommendedProducts: [Product]
 }
