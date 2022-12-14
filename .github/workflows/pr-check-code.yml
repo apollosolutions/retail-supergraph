@@ -65,6 +65,12 @@ jobs:
             --name products \
             --schema ./subgraphs/products/schema.graphql
 
+      - name: Check reviews subgraph
+        run: |
+          rover subgraph check apollo-retail-supergraph@prod \
+            --name reviews \
+            --schema ./subgraphs/reviews/schema.graphql
+
       - name: Check shipping subgraph
         run: |
           rover subgraph check apollo-retail-supergraph@prod \
