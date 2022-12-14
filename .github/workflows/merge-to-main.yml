@@ -120,6 +120,28 @@ jobs:
             --routing-url https://apollosolutions--retail-supergraph--products.fly.dev \
             --schema schema.graphql
 
+  subgraph-reviews:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Install Rover
+        run: |
+          curl -sSL https://rover.apollo.dev/nix/latest | sh
+          echo "$HOME/.rover/bin" >> $GITHUB_PATH
+
+      - name: Deploy to fly
+        working-directory: ./subgraphs/reviews
+        run: flyctl deploy --remote-only
+
+      - name: Publish subgraph schema
+        working-directory: ./subgraphs/reviews
+        run: |
+          rover subgraph publish apollo-retail-supergraph@prod \
+            --name reviews \
+            --routing-url https://apollosolutions--retail-supergraph--reviews.fly.dev \
+            --schema schema.graphql
+
   subgraph-shipping:
     runs-on: ubuntu-latest
     steps:
