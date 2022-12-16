@@ -1,4 +1,4 @@
-import { PRODUCTS, VARIANTS } from "./data.js";
+import {PRODUCTS, VARIANTS} from "./data.js";
 
 export const getVariantById = (id) => VARIANTS.find((it) => it.id === id);
 export const getProductById = (id) => PRODUCTS.find((it) => it.id === id);
@@ -42,6 +42,7 @@ export const resolvers = {
       }
       return variants;
     },
+    releaseDate: () => getRandomDate().toISOString()
   },
   Variant: {
     __resolveReference(ref) {
@@ -53,3 +54,12 @@ export const resolvers = {
     },
   },
 };
+
+const getRandomDate = () => {
+  // Get a random number between -10 and 10
+  const randomDays = Math.floor(Math.random() * 20) - 10;
+  const today = new Date();
+
+  // Add the random number of days to today's date
+  return new Date(today.getTime() + randomDays * 24 * 60 * 60 * 1000);
+}

@@ -49,6 +49,9 @@ type Product @key(fields: "id") {
   description: String
   mediaUrl: String
 
+  "Mock random date of when a product might be released"
+  releaseDate: String
+
   """
   Variants of the products to view specific size/color/price options
   """
