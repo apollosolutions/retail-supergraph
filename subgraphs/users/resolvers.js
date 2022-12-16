@@ -21,6 +21,7 @@ export const resolvers = {
     __resolveReference(ref) {
       return getUserById(ref.id);
     },
-    previousSessions: () => [uuidv4(), uuidv4()]
+    previousSessions: () => [uuidv4(), uuidv4()],
+    loyaltyPoints: () => Math.floor(Math.random() * 20)
   },
 };
