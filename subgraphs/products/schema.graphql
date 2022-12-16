@@ -1,7 +1,7 @@
 # noinspection GraphQLTypeRedefinition
 
 extend schema
-  @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
+  @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key", "@tag"])
 
 type Query {
   """
@@ -43,8 +43,9 @@ input VariantSearchInput {
 A specific product sold by our store. This contains all the high level details but is not the purchasable item.
 See Variant for more info.
 """
-type Product @key(fields: "id") {
-  id: ID!
+type Product @key(fields: "id") @key(fields: "upc") @tag(name: "partner") {
+  id: ID! @tag(name: "internal")
+  upc: ID!
   title: String
   description: String
   mediaUrl: String

@@ -28,8 +28,9 @@ export const resolvers = {
   },
   Product: {
     __resolveReference(ref) {
-      return getProductById(ref.id);
+      return getProductById(ref.id || ref.upc);
     },
+    upc: (parent) => parent.id,
     variants(parent, { searchInput }) {
       const variants = getProductById(parent.id).variants.map((it) =>
         getVariantById(it.id)
