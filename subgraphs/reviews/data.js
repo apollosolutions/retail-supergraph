@@ -4,7 +4,7 @@ export const REVIEWS = [
     body: "Good product",
     author: "User 1",
     product: {
-      id: "product:1"
+      upc: "product:1"
     }
   },
   {
@@ -12,7 +12,7 @@ export const REVIEWS = [
     body: "Ok product",
     author: "User 1",
     product: {
-      id: "product:2"
+      upc: "product:2"
     }
   },
   {
@@ -20,7 +20,7 @@ export const REVIEWS = [
     body: "Decent product",
     author: "User 3",
     product: {
-      id: "product:3"
+      upc: "product:3"
     }
   },
   {
@@ -28,7 +28,7 @@ export const REVIEWS = [
     body: "Good product",
     author: "User 1",
     product: {
-      id: "product:4"
+      upc: "product:4"
     }
   },
   {
@@ -36,7 +36,7 @@ export const REVIEWS = [
     body: "Ok product",
     author: "User 1",
     product: {
-      id: "product:5"
+      upc: "product:5"
     }
   },
   {
@@ -44,7 +44,7 @@ export const REVIEWS = [
     body: "Decent product",
     author: "User 1",
     product: {
-      id: "product:1"
+      upc: "product:1"
     }
   },
   {
@@ -52,7 +52,7 @@ export const REVIEWS = [
     body: "Good product",
     author: "User 1",
     product: {
-      id: "product:2"
+      upc: "product:2"
     }
   },
   {
@@ -60,7 +60,7 @@ export const REVIEWS = [
     body: "Ok product",
     author: "User 1",
     product: {
-      id: "product:3"
+      upc: "product:3"
     }
   }
 ];
