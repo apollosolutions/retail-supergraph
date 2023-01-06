@@ -5,40 +5,40 @@ import { start as orders } from "@apollosolutions/retail-supergraph-orders/serve
 import { start as products } from "@apollosolutions/retail-supergraph-products/server.js";
 import { start as reviews } from "@apollosolutions/retail-supergraph-reviews/server.js";
 import { start as shipping } from "@apollosolutions/retail-supergraph-shipping/server.js";
-import { start as users } from "@apollosolutions/retail-supergraph-users/server.js";
 import { start as gateway } from "@apollosolutions/retail-supergraph-gateway/server.js";
+import { startSubgraphs } from "./subgraphs.js";
 
-const LOCAL_SUBGRAPH_CONFIG = [
+export const LOCAL_SUBGRAPH_CONFIG = [
   {
-    name: "checkout",
+    name: 'checkout',
     port: 4001
   },
   {
-    name: "discovery",
+    name: 'discovery',
     port: 4002
   },
   {
-    name: "inventory",
+    name: 'inventory',
     port: 4003
   },
   {
-    name: "orders",
+    name: 'orders',
     port: 4004
   },
   {
-    name: "products",
+    name: 'products',
     port: 4005
   },
   {
-    name: "reviews",
+    name: 'reviews',
     port: 4006
   },
   {
-    name: "shipping",
+    name: 'shipping',
     port: 4007
   },
   {
-    name: "users",
+    name: 'users',
     port: 4008,
     url: 'http://localhost:4008/users/graphql'
   }
@@ -48,6 +48,9 @@ const getLocalPort = (subgraphName) =>
   LOCAL_SUBGRAPH_CONFIG.find(it => it.name === subgraphName).port;
 
 (async () => {
+  // start subgraphs in monolith mode
+  await startSubgraphs();
+
   // start all subgraphs
   await Promise.all([
     checkout(getLocalPort('checkout')),
@@ -56,8 +59,7 @@ const getLocalPort = (subgraphName) =>
     orders(getLocalPort('orders')),
     products(getLocalPort('products')),
     reviews(getLocalPort('reviews')),
-    shipping(getLocalPort('shipping')),
-    users(getLocalPort('users')),
+    shipping(getLocalPort('shipping'))
   ]);
 
   // wait 1s, needed for Stackblitz to load
