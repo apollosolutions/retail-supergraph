@@ -12,7 +12,7 @@ a ticket directly in Apollo Studio.
 ## View the schema
 This demo is published to the [Apollo Solutions](https://studio.apollographql.com/org/apollo-solutions) Studio
 org with the graph
-id [retail-supergraph](https://studio.apollographql.com/graph/apollo-retail-supergraph).
+id [apollo-retail-supergraph](https://studio.apollographql.com/graph/apollo-retail-supergraph).
 
 You can also view and share the [public variant](https://studio.apollographql.com/public/apollo-retail-supergraph/home?variant=prod) to run queries right from Explorer.
 

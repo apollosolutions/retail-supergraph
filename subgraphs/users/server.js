@@ -1,5 +1,10 @@
 import { ApolloServer } from "@apollo/server";
-import { startStandaloneServer } from "@apollo/server/standalone";
+import { expressMiddleware } from '@apollo/server/express4';
+import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
+import express from 'express';
+import http from 'http';
+import cors from 'cors';
+import bodyParser from 'body-parser';
 import { parse } from "graphql";
 import { buildSubgraphSchema } from "@apollo/subgraph";
 import { resolvers } from "./resolvers.js";
@@ -12,15 +17,28 @@ const typeDefs = parse(
   readFileSync(resolve(__dirname, "schema.graphql"), "utf8")
 );
 const schema = buildSubgraphSchema([{ typeDefs, resolvers }]);
-const server = new ApolloServer({ schema });
 
 export const start = async (port) => {
-  const serverPort = port ?? process.env.PORT;
-  const { url } = await startStandaloneServer(server, {
-    listen: { port: serverPort },
-    async context({ req }) {
-      return { headers: req.headers };
-    },
+  const app = express();
+  const httpServer = http.createServer(app);
+  const server = new ApolloServer({
+    schema,
+    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })]
   });
-  console.log(`Users subgraph running at ${url}`);
+
+  await server.start();
+
+  app.use(
+    '/users/graphql',
+    cors(),
+    bodyParser.json(),
+    expressMiddleware(server, {
+      context: async ({ req }) => ({ headers: req.headers })
+    })
+  );
+
+  const serverPort = port ?? process.env.PORT;
+  await new Promise((resolve) => httpServer.listen({ port: serverPort }, resolve));
+
+  console.log(`Users subgraph running at http://localhost:${serverPort}/users/graphql`);
 };

@@ -39,7 +39,8 @@ const LOCAL_SUBGRAPH_CONFIG = [
   },
   {
     name: "users",
-    port: 4008
+    port: 4008,
+    url: 'http://localhost:4008/users/graphql'
   }
 ];
 
