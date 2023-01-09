@@ -10,19 +10,25 @@ env:
   FLY_API_TOKEN: ${{ secrets.SHANES_FLY_API_TOKEN }}
 
 jobs:
+  deploy-monolith:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Deploy to fly
+        run: flyctl deploy --remote-only
+
   subgraph-checkout:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
+
       - name: Install Rover
         run: |
           curl -sSL https://rover.apollo.dev/nix/latest | sh
           echo "$HOME/.rover/bin" >> $GITHUB_PATH
-
-      - name: Deploy to fly
-        working-directory: ./subgraphs/checkout
-        run: flyctl deploy --remote-only
 
       - name: Publish subgraph schema
         working-directory: ./subgraphs/checkout
@@ -36,15 +42,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
+
       - name: Install Rover
         run: |
           curl -sSL https://rover.apollo.dev/nix/latest | sh
           echo "$HOME/.rover/bin" >> $GITHUB_PATH
-
-      - name: Deploy to fly
-        working-directory: ./subgraphs/discovery
-        run: flyctl deploy --remote-only
 
       - name: Publish subgraph schema
         working-directory: ./subgraphs/discovery
@@ -58,15 +60,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
+
       - name: Install Rover
         run: |
           curl -sSL https://rover.apollo.dev/nix/latest | sh
           echo "$HOME/.rover/bin" >> $GITHUB_PATH
-
-      - name: Deploy to fly
-        working-directory: ./subgraphs/inventory
-        run: flyctl deploy --remote-only
 
       - name: Publish subgraph schema
         working-directory: ./subgraphs/inventory
@@ -80,15 +78,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
+
       - name: Install Rover
         run: |
           curl -sSL https://rover.apollo.dev/nix/latest | sh
           echo "$HOME/.rover/bin" >> $GITHUB_PATH
-
-      - name: Deploy to fly
-        working-directory: ./subgraphs/orders
-        run: flyctl deploy --remote-only
 
       - name: Publish subgraph schema
         working-directory: ./subgraphs/orders
@@ -102,15 +96,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
+
       - name: Install Rover
         run: |
           curl -sSL https://rover.apollo.dev/nix/latest | sh
           echo "$HOME/.rover/bin" >> $GITHUB_PATH
-
-      - name: Deploy to fly
-        working-directory: ./subgraphs/products
-        run: flyctl deploy --remote-only
 
       - name: Publish subgraph schema
         working-directory: ./subgraphs/products
@@ -124,15 +114,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
+
       - name: Install Rover
         run: |
           curl -sSL https://rover.apollo.dev/nix/latest | sh
           echo "$HOME/.rover/bin" >> $GITHUB_PATH
-
-      - name: Deploy to fly
-        working-directory: ./subgraphs/reviews
-        run: flyctl deploy --remote-only
 
       - name: Publish subgraph schema
         working-directory: ./subgraphs/reviews
@@ -146,15 +132,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
+
       - name: Install Rover
         run: |
           curl -sSL https://rover.apollo.dev/nix/latest | sh
           echo "$HOME/.rover/bin" >> $GITHUB_PATH
-
-      - name: Deploy to fly
-        working-directory: ./subgraphs/shipping
-        run: flyctl deploy --remote-only
 
       - name: Publish subgraph schema
         working-directory: ./subgraphs/shipping
@@ -168,15 +150,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: superfly/flyctl-actions/setup-flyctl@master
+
       - name: Install Rover
         run: |
           curl -sSL https://rover.apollo.dev/nix/latest | sh
           echo "$HOME/.rover/bin" >> $GITHUB_PATH
-
-      - name: Deploy to fly
-        working-directory: ./subgraphs/users
-        run: flyctl deploy --remote-only
 
       - name: Publish subgraph schema
         working-directory: ./subgraphs/users
