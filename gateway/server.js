@@ -4,9 +4,9 @@ import { startStandaloneServer } from "@apollo/server/standalone";
 import { ApolloServerPluginLandingPageLocalDefault } from "@apollo/server/plugin/landingPage/default";
 import { DataSourceWithHeaders } from "./header-forwarding.js";
 
-export const start = async (port, localSubgraphConfig) => {
+export const start = async (gatewayPort, subgraphsPort, localSubgraphConfig) => {
   const gateway = new ApolloGateway({
-    ...getGatewayConfig(localSubgraphConfig),
+    ...getGatewayConfig(subgraphsPort, localSubgraphConfig),
     buildService: (config) => {
       return new DataSourceWithHeaders(config);
     },
@@ -18,7 +18,7 @@ export const start = async (port, localSubgraphConfig) => {
     plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })]
   });
 
-  const serverPort = port ?? process.env.PORT;
+  const serverPort = gatewayPort ?? process.env.PORT;
   const { url } = await startStandaloneServer(server, {
     listen: { port: serverPort },
     async context({ req }) {
@@ -28,13 +28,13 @@ export const start = async (port, localSubgraphConfig) => {
   console.log(`🚀 Gateway running at ${url}`);
 };
 
-const getGatewayConfig = (localSubgraphConfig) => {
+const getGatewayConfig = (subgraphsPort, localSubgraphConfig) => {
   if (process.env.NODE_ENV === "dev") {
     return {
       supergraphSdl: new IntrospectAndCompose({
         subgraphs: localSubgraphConfig.map(it => ({
           name: it.name,
-          url: `http://localhost:${it.port}/graphql`
+          url: `http://localhost:${subgraphsPort}/${it.name}/graphql`
         })),
       }),
       debug: isDebugMode(),
