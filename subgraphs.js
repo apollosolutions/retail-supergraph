@@ -1,18 +1,18 @@
+import { expressMiddleware } from '@apollo/server/express4';
+import { ApolloServer } from '@apollo/server';
+import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 import express from 'express';
 import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { getSchema as getCheckoutSchema } from "./subgraphs/checkout/subgraph.js";
-import { getSchema as getDiscoverySchema } from "./subgraphs/discovery/subgraph.js";
-import { getSchema as getInventorySchema } from "./subgraphs/inventory/subgraph.js";
-import { getSchema as getOrdersSchema } from "./subgraphs/orders/subgraph.js";
-import { getSchema as getProductsSchema } from "./subgraphs/products/subgraph.js";
-import { getSchema as getReviewsSchema } from "./subgraphs/reviews/subgraph.js";
-import { getSchema as getShippingSchema } from "./subgraphs/shipping/subgraph.js";
-import { getSchema as getUsersSchema } from "./subgraphs/users/subgraph.js";
-import { expressMiddleware } from "@apollo/server/express4";
-import { ApolloServer } from "@apollo/server";
-import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
+import { getCheckoutSchema } from './subgraphs/checkout/subgraph.js';
+import { getDiscoverySchema } from './subgraphs/discovery/subgraph.js';
+import { getInventorySchema } from './subgraphs/inventory/subgraph.js';
+import { getOrdersSchema } from './subgraphs/orders/subgraph.js';
+import { getProductsSchema } from './subgraphs/products/subgraph.js';
+import { getReviewsSchema } from './subgraphs/reviews/subgraph.js';
+import { getShippingSchema } from './subgraphs/shipping/subgraph.js';
+import { getUsersSchema } from './subgraphs/users/subgraph.js';
 
 export const LOCAL_SUBGRAPH_CONFIG = [
   {
@@ -79,9 +79,9 @@ export const startSubgraphs = async (httpPort) => {
       })
     );
 
-    console.log(`Setting up ${subgraphConfig.name} subgraph running at http://localhost:${serverPort}${path}`);
+    console.log(`Setting up [${subgraphConfig.name}] subgraph at http://localhost:${serverPort}${path}`);
   }
 
-  // Start monolith at given port
+  // Start entire monolith at given port
   await new Promise((resolve) => httpServer.listen({ port: serverPort }, resolve));
 };

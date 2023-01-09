@@ -10,4 +10,4 @@ const typeDefs = parse(
   readFileSync(resolve(__dirname, "schema.graphql"), "utf8")
 );
 
-export const getSchema = () => buildSubgraphSchema([{ typeDefs, resolvers }]);
+export const getInventorySchema = () => buildSubgraphSchema([{ typeDefs, resolvers }]);
