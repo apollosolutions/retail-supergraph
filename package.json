@@ -8,6 +8,7 @@
   ],
   "scripts": {
     "dev": "NODE_ENV=dev nodemon dev.js",
+    "start": "node subgraphs.js",
     "health-check": "curl -H 'content-type: application/json' http://localhost:4000/graphql?query=%7B__typename%7D",
     "test": "npm run test:compile && npm run test:runtime",
     "test:runtime": "start-server-and-test dev http-get://localhost:4000/?query={__typename} health-check",

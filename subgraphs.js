@@ -6,6 +6,14 @@ import { getSchema as getUsersSchema } from "@apollosolutions/retail-supergraph-
 import {expressMiddleware} from "@apollo/server/express4";
 import {ApolloServer} from "@apollo/server";
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
+import {start as checkout} from "@apollosolutions/retail-supergraph-checkout/server.js";
+import {start as discovery} from "@apollosolutions/retail-supergraph-discovery/server.js";
+import {start as inventory} from "@apollosolutions/retail-supergraph-inventory/server.js";
+import {start as orders} from "@apollosolutions/retail-supergraph-orders/server.js";
+import {start as products} from "@apollosolutions/retail-supergraph-products/server.js";
+import {start as reviews} from "@apollosolutions/retail-supergraph-reviews/server.js";
+import {start as shipping} from "@apollosolutions/retail-supergraph-shipping/server.js";
+import {start as gateway} from "@apollosolutions/retail-supergraph-gateway/server.js";
 
 export const LOCAL_SUBGRAPH_CONFIG = [
   {
@@ -51,3 +59,8 @@ export const startSubgraphs = async () => {
     console.log(`${subgraphConfig.name} subgraph running at http://localhost:${serverPort}${path}`);
   }
 };
+
+(async () => {
+  // start subgraphs in monolith mode
+  await startSubgraphs();
+})();
