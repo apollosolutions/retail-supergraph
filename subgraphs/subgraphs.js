@@ -5,14 +5,14 @@ import express from 'express';
 import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { getCheckoutSchema } from './subgraphs/checkout/subgraph.js';
-import { getDiscoverySchema } from './subgraphs/discovery/subgraph.js';
-import { getInventorySchema } from './subgraphs/inventory/subgraph.js';
-import { getOrdersSchema } from './subgraphs/orders/subgraph.js';
-import { getProductsSchema } from './subgraphs/products/subgraph.js';
-import { getReviewsSchema } from './subgraphs/reviews/subgraph.js';
-import { getShippingSchema } from './subgraphs/shipping/subgraph.js';
-import { getUsersSchema } from './subgraphs/users/subgraph.js';
+import { getCheckoutSchema } from './checkout/subgraph.js';
+import { getDiscoverySchema } from './discovery/subgraph.js';
+import { getInventorySchema } from './inventory/subgraph.js';
+import { getOrdersSchema } from './orders/subgraph.js';
+import { getProductsSchema } from './products/subgraph.js';
+import { getReviewsSchema } from './reviews/subgraph.js';
+import { getShippingSchema } from './shipping/subgraph.js';
+import { getUsersSchema } from './users/subgraph.js';
 
 export const LOCAL_SUBGRAPH_CONFIG = [
   {
