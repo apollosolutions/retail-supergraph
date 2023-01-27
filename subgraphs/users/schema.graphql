@@ -3,14 +3,6 @@
 extend schema
   @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
 
-type Query {
-  """
-  Get the current user from our fake "auth" headers
-  Set the "x-user-id" header to the user id.
-  """
-  user: User
-}
-
 """
 An user account in our system
 """
