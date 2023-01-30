@@ -56,7 +56,7 @@ type Product @key(fields: "id") @key(fields: "upc") @tag(name: "partner") {
   """
   Variants of the products to view specific size/color/price options
   """
-  variants(searchInput: VariantSearchInput): [Variant]
+  variants(searchInput: VariantSearchInput = {}): [Variant]
 }
 
 """

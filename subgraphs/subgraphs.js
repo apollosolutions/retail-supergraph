@@ -64,6 +64,8 @@ export const startSubgraphs = async (httpPort) => {
     const schema = subgraphConfig.getSchema();
     const server = new ApolloServer({
       schema,
+      // For a real subgraph introspection should remain off, but for demo we enabled
+      introspection: true,
       plugins: [ApolloServerPluginDrainHttpServer({ httpServer })]
     });
 
