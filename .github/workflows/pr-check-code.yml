@@ -82,3 +82,10 @@ jobs:
           rover subgraph check apollo-retail-supergraph@prod \
             --name users \
             --schema ./subgraphs/users/schema.graphql
+
+
+  actionlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: reviewdog/action-actionlint@v1
