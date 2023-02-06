@@ -3,6 +3,8 @@ name: merge-to-main
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch:
+
 
 env:
   APOLLO_KEY: ${{ secrets.APOLLO_KEY }}

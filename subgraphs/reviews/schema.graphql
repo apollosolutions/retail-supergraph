@@ -3,6 +3,7 @@
 extend schema
   @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
 
+"A review of a given product by a specific user"
 type Review @key(fields: "id") {
   id: ID!
 
@@ -10,7 +11,10 @@ type Review @key(fields: "id") {
   body: String
 
   "The person who authored the review"
-  author: String
+  author: String @deprecated(reason: "Use the new `user` field")
+
+  "The User who submitted the review"
+  user: User
 
   "The product which this review is about"
   product: Product
@@ -21,3 +25,6 @@ type Product @key(fields: "upc") {
   reviews: [Review!]
 }
 
+type User @key(fields: "id", resolvable: false) {
+  id: ID!
+}
