@@ -1,9 +1,5 @@
 # Local Development Instructions
 
-## Running in browser
-
-Using [Stackblitz](https://stackblitz.com/github/apollosolutions/retail-supergraph?title=Apollo%20Solutions%20-%20Retail%20Supergraph) you can run a local instance of this supergraph without cloning the repo.
-
 ## Running locally
 
 ### Software requirements
