@@ -1,6 +1,0 @@
-{
-  "includes": [
-    "federation-spec.graphql",
-    "subgraphs/**/*.graphql"
-  ]
-}
