@@ -11,9 +11,7 @@ type Query {
   user: User
 }
 
-"""
-An user account in our system
-"""
+"An user account in our system"
 type User @key(fields: "id") {
   id: ID!
 
