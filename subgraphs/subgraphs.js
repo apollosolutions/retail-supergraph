@@ -5,6 +5,7 @@ import express from "express";
 import http from "http";
 import cors from "cors";
 import bodyParser from "body-parser";
+import "dotenv/config";
 import { getMediaSchema } from "./media/subgraph.js";
 import { getUsersSchema } from "./users/subgraph.js";
 
