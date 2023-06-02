@@ -20,6 +20,7 @@ export const resolvers = {
       return getMediaById(ref.id);
     },
     releaseDate: () => getRandomDate().toISOString(),
+    content: () => {},
   },
 };
 
