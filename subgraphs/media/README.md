@@ -1,12 +1,14 @@
-# User Subgraph
+# Media Subgraph
 
-This hold the information in regards an user in the system.
+This hold the information in regards to media content.
 
 Additions could be, but are not limited to:
 
-- Comments
-- Favourite Songs
-- Last Listened
+- Search catagories/tags
+- Genres
+- Stream Count
+- Artist Name
+- Related/Similar songs
 
 ### Why is my viewer empty?!
 

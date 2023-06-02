@@ -11,7 +11,9 @@ export const resolvers = {
       const user = getUserById(userId);
 
       if (!user) {
-        throw new GraphQLError("Could not locate user by id. Please specify a valid `x-user-id` header like `user:1`");
+        throw new GraphQLError(
+          "Could not locate user by id. Please specify a valid `x-user-id` header like `user:1`"
+        );
       }
 
       return user;
@@ -22,6 +24,6 @@ export const resolvers = {
       return getUserById(ref.id);
     },
     previousSessions: () => [uuidv4(), uuidv4()],
-    loyaltyPoints: () => Math.floor(Math.random() * 20)
+    accountId: () => Math.floor(Math.random() * 100000),
   },
 };

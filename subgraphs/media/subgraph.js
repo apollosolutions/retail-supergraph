@@ -10,4 +10,5 @@ const typeDefs = parse(
   readFileSync(resolve(__dirname, "schema.graphql"), "utf8")
 );
 
-export const getOrdersSchema = () => buildSubgraphSchema([{ typeDefs, resolvers }]);
+export const getMediaSchema = () =>
+  buildSubgraphSchema([{ typeDefs, resolvers }]);

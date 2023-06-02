@@ -1,0 +1,32 @@
+# noinspection GraphQLTypeRedefinition
+
+extend schema
+  @link(
+    url: "https://specs.apollo.dev/federation/v2.3"
+    import: ["@key", "@tag"]
+  )
+
+type Query {
+  """
+  Get specific media by id. Useful for the primary media page or overview page
+  """
+  media(id: ID!): Media
+}
+
+"""
+Search filters for when returning Media
+"""
+input MediaSearchInput {
+  titleStartsWith: String
+}
+
+"""
+A specific piece of media for the site. This contains all the high level details describing the media along with the content itself.
+"""
+type Media @key(fields: "id") {
+  id: ID! @tag(name: "internal")
+  title: String
+  description: String
+  mediaUrl: String
+  releaseDate: String
+}

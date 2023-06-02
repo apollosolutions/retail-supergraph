@@ -1,7 +1,10 @@
-# noinspection GraphQLTypeRedefinition
+# noinspection
 
 extend schema
-  @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
+  @link(
+    url: "https://specs.apollo.dev/federation/v2.3"
+    import: ["@key", "@tag"]
+  )
 
 type Query {
   """
@@ -22,49 +25,6 @@ type User @key(fields: "id") {
   """
   username: String!
 
-  """
-  Get the list of last session id of user activity
-  """
-  previousSessions: [ID!]
-
-  "Total saved loyalty points and rewards"
-  loyaltyPoints: Int
-
-  """
-  Saved payment methods that can be used to submit orders
-  """
-  paymentMethods: [PaymentMethod]
-
-  """
-  The users previous purchases
-  """
-  orders: [Order]
-
-  """
-  The users current saved shipping address
-  """
-  shippingAddress: String
-}
-
-"""
-A saved payment option for an user
-"""
-type PaymentMethod {
-  id: ID!
-  name: String
-  description: String
-  type: PaymentType!
-}
-
-"""
-A fix set of payment types that we accept
-"""
-enum PaymentType {
-  CREDIT_CARD
-  DEBIT_CARD
-  BANK_ACCOUNT
-}
-
-type Order @key(fields: "id", resolvable: false) {
-  id: ID!
+  "Internal Account Id associated with the given User"
+  accountId: Int @tag(name: "internal")
 }
