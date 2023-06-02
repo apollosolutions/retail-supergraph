@@ -16,6 +16,14 @@ We also have a series of blog posts on media best practices that dive into diffe
 
 - _Blogs currently in progress_
 
+## GraphOS Features Demonstrated in Repo
+
+Below is the list of GraphOS Specific features that are demonstrated in this repo:
+
+- @Defer
+- Subscriptions
+- Entity Interface
+
 ## Local Development
 
 If you want to run this supergraph locally you can clone this [GitHub repo](https://github.com/apollosolutions/media-supergraph) and follow the instructions in [DEV.md](https://github.com/apollosolutions/media-supergraph/blob/main/DEV.md).
