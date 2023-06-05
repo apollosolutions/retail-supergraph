@@ -12,4 +12,4 @@ Additions could be, but are not limited to:
 
 ### Why is my viewer empty?!
 
-This is based on the header `"user-id"`. Pass that header with a number between 1 and 3.
+This is based on the header `"x-user-id"`. Pass that header with a number between 1 and 3.

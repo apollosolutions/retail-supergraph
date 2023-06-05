@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "NODE_ENV=dev nodemon dev.js",
     "start": "node prod.js",
-    "router": "eval $(grep '^APOLLO_KEY' .env) APOLLO_GRAPH_REF=Demo-Supergraph@current ./router --config ./router-config.yaml",
-    "publish:subgraph-media": "rover subgraph publish Media-Graph-Demo@current --name media --schema ./subgraphs/media/schema.graphql --routing-url http://localhost:4001/",
-    "publish:subgraph-user": "rover subgraph publish Media-Graph-Demo@current --name users --schema ./subgraphs/users/schema.graphql --routing-url http://localhost:4002/",
+    "router": "eval $(grep '^APOLLO_KEY' .env) APOLLO_GRAPH_REF=Media-Graph-Demo@current ./router --config ./router/router-config.yaml",
+    "publish:subgraph-media": "rover subgraph publish Media-Graph-Demo@current --name media --schema ./subgraphs/media/schema.graphql --routing-url http://localhost:4001/media/graphql",
+    "publish:subgraph-user": "rover subgraph publish Media-Graph-Demo@current --name users --schema ./subgraphs/users/schema.graphql --routing-url http://localhost:4001/users/graphql",
     "health-check": "curl -H 'content-type: application/json' http://localhost:4000/graphql?query=%7B__typename%7D",
     "test": "npm run test:compile && npm run test:runtime",
     "test:runtime": "start-server-and-test dev http-get://localhost:4000/?query={__typename} health-check",
