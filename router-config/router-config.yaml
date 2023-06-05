@@ -8,7 +8,7 @@ cors:
 include_subgraph_errors:
   all: true
 rhai:
-  scripts: "./router/scripts"
+  scripts: "./router-config/scripts"
   main: "main.rhai"
 sandbox:
   enabled: true
