@@ -1,0 +1,34 @@
+federation_version: =2.5.0
+subgraphs:
+  checkout:
+    routing_url: http://localhost:4001/checkout/graphql
+    schema:
+      file: ./subgraphs/checkout/schema.graphql
+  discovery:
+    routing_url: http://localhost:4001/discovery/graphql
+    schema:
+      file: ./subgraphs/discovery/schema.graphql
+  inventory:
+    routing_url: http://localhost:4001/inventory/graphql
+    schema:
+      file: ./subgraphs/inventory/schema.graphql
+  orders:
+    routing_url: http://localhost:4001/orders/graphql
+    schema:
+      file: ./subgraphs/orders/schema.graphql
+  products:
+    routing_url: http://localhost:4001/products/graphql
+    schema:
+      file: ./subgraphs/products/schema.graphql
+  reviews:
+    routing_url: http://localhost:4001/reviews/graphql
+    schema:
+      file: ./subgraphs/reviews/schema.graphql
+  shipping:
+    routing_url: http://localhost:4001/shipping/graphql
+    schema:
+      file: ./subgraphs/shipping/schema.graphql
+  users:
+    routing_url: http://localhost:4001/users/graphql
+    schema:
+      file: ./subgraphs/users/schema.graphql

@@ -21,136 +21,63 @@ jobs:
       - name: Deploy to fly
         run: flyctl deploy --remote-only
 
-  subgraph-checkout:
+  publish-schemas:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install Rover
-        run: |
-          curl -sSL https://rover.apollo.dev/nix/latest | sh
-          echo "$HOME/.rover/bin" >> $GITHUB_PATH
+      - uses: apollosolutions/rover-actions/install-rover-cli@v1
 
-      - name: Publish subgraph schema
+      - name: Publish checkout schema
         working-directory: ./subgraphs/checkout
         run: |
           rover subgraph publish apollo-retail-supergraph@prod \
             --name checkout \
             --schema schema.graphql
 
-  subgraph-discovery:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install Rover
-        run: |
-          curl -sSL https://rover.apollo.dev/nix/latest | sh
-          echo "$HOME/.rover/bin" >> $GITHUB_PATH
-
-      - name: Publish subgraph schema
+      - name: Publish discovery schema
         working-directory: ./subgraphs/discovery
         run: |
           rover subgraph publish apollo-retail-supergraph@prod \
             --name discovery \
             --schema schema.graphql
 
-  subgraph-inventory:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install Rover
-        run: |
-          curl -sSL https://rover.apollo.dev/nix/latest | sh
-          echo "$HOME/.rover/bin" >> $GITHUB_PATH
-
-      - name: Publish subgraph schema
+      - name: Publish inventory schema
         working-directory: ./subgraphs/inventory
         run: |
           rover subgraph publish apollo-retail-supergraph@prod \
             --name inventory \
             --schema schema.graphql
 
-  subgraph-orders:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install Rover
-        run: |
-          curl -sSL https://rover.apollo.dev/nix/latest | sh
-          echo "$HOME/.rover/bin" >> $GITHUB_PATH
-
-      - name: Publish subgraph schema
+      - name: Publish orders schema
         working-directory: ./subgraphs/orders
         run: |
           rover subgraph publish apollo-retail-supergraph@prod \
             --name orders \
             --schema schema.graphql
 
-  subgraph-products:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install Rover
-        run: |
-          curl -sSL https://rover.apollo.dev/nix/latest | sh
-          echo "$HOME/.rover/bin" >> $GITHUB_PATH
-
-      - name: Publish subgraph schema
+      - name: Publish products schema
         working-directory: ./subgraphs/products
         run: |
           rover subgraph publish apollo-retail-supergraph@prod \
             --name products \
             --schema schema.graphql
 
-  subgraph-reviews:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install Rover
-        run: |
-          curl -sSL https://rover.apollo.dev/nix/latest | sh
-          echo "$HOME/.rover/bin" >> $GITHUB_PATH
-
-      - name: Publish subgraph schema
+      - name: Publish reviews schema
         working-directory: ./subgraphs/reviews
         run: |
           rover subgraph publish apollo-retail-supergraph@prod \
             --name reviews \
             --schema schema.graphql
 
-  subgraph-shipping:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install Rover
-        run: |
-          curl -sSL https://rover.apollo.dev/nix/latest | sh
-          echo "$HOME/.rover/bin" >> $GITHUB_PATH
-
-      - name: Publish subgraph schema
+      - name: Publish shipping schema
         working-directory: ./subgraphs/shipping
         run: |
           rover subgraph publish apollo-retail-supergraph@prod \
             --name shipping \
             --schema schema.graphql
 
-  subgraph-users:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install Rover
-        run: |
-          curl -sSL https://rover.apollo.dev/nix/latest | sh
-          echo "$HOME/.rover/bin" >> $GITHUB_PATH
-
-      - name: Publish subgraph schema
+      - name: Publish users schema
         working-directory: ./subgraphs/users
         run: |
           rover subgraph publish apollo-retail-supergraph@prod \
@@ -162,10 +89,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install Rover
-        run: |
-          curl -sSL https://rover.apollo.dev/nix/latest | sh
-          echo "$HOME/.rover/bin" >> $GITHUB_PATH
+      - uses: apollosolutions/rover-actions/install-rover-cli@v1
 
       - name: Publish README
         run: rover readme publish apollo-retail-supergraph@prod --file README.md
