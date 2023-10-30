@@ -5,6 +5,7 @@
 ### Software requirements
 
 * Install the latest LTS version of Node (preferably using [nvm](https://github.com/nvm-sh/nvm))
+* Install the latest [Rover CLI](https://www.apollographql.com/docs/rover/getting-started)
 
 ### Install dependencies
 
@@ -12,9 +13,9 @@
 npm install
 ```
 
-### Running the subgraphs and gateway
+### Running the subgraphs and Router
 
-Run the subgraphs and gateway, which use [Apollo Server](https://www.apollographql.com/docs/apollo-server/), using `npm`
+Run the subgraphs and Router, which use [Apollo Server](https://www.apollographql.com/docs/apollo-server/), using `npm`
 
 ```shell
 npm run dev

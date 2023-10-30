@@ -1,0 +1,8 @@
+supergraph:
+  listen: 127.0.0.1:4000
+
+headers:
+  all:
+    request:
+      - propagate:
+          matching: .*

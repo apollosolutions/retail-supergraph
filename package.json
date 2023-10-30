@@ -3,26 +3,25 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "NODE_ENV=dev nodemon dev.js",
-    "start": "node prod.js",
-    "health-check": "curl -H 'content-type: application/json' http://localhost:4000/graphql?query=%7B__typename%7D",
-    "test": "npm run test:compile && npm run test:runtime",
-    "test:runtime": "start-server-and-test dev http-get://localhost:4000/?query={__typename} health-check",
+    "dev": "npm run dev:subgraphs & npm run dev:router",
+    "dev:subgraphs": "NODE_ENV=dev nodemon index.js",
+    "dev:router": "rover dev --supergraph-config supergraph-config-dev.yaml --router-config router-config-dev.yaml",
+    "start": "node index.js",
+    "test": "npm run test:compile && npm run test:compose",
+    "test:compose": "APOLLO_ELV2_LICENSE=accept rover supergraph compose --config supergraph-config-dev.yaml --output supergraph.graphql",
     "test:compile": "tsc"
   },
   "dependencies": {
-    "@apollo/gateway": "^2.4.2",
-    "@apollo/server": "^4.7.0",
-    "@apollo/subgraph": "^2.4.2",
+    "@apollo/server": "^4.9.5",
+    "@apollo/subgraph": "^2.5.6",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "graphql": "^16.6.0",
-    "uuid": "^9.0.0"
+    "graphql": "^16.8.1",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.22",
-    "start-server-and-test": "^2.0.0",
     "typescript": "^5.0.4"
   },
   "nodemonConfig": {
