@@ -33,10 +33,12 @@ jobs:
       - uses: apollosolutions/rover-actions/install-rover-cli@v1
 
       - name: Check checkout subgraph
-        run: |
-          rover subgraph check apollo-retail-supergraph@prod \
-            --name checkout \
-            --schema ./subgraphs/checkout/schema.graphql
+        uses: apollosolutions/rover-actions/subgraph-check@v1
+        with:
+          apollo-key: ${{ secrets.APOLLO_KEY }}
+          graph-ref: apollo-retail-supergraph@prod
+          name: checkout
+          schema: ./subgraphs/checkout/schema.graphql
 
       - name: Check discovery subgraph
         run: |
