@@ -41,46 +41,60 @@ jobs:
           schema: ./subgraphs/checkout/schema.graphql
 
       - name: Check discovery subgraph
-        run: |
-          rover subgraph check apollo-retail-supergraph@prod \
-            --name discovery \
-            --schema ./subgraphs/discovery/schema.graphql
+        uses: apollosolutions/rover-actions/subgraph-check@v1
+        with:
+          apollo-key: ${{ secrets.APOLLO_KEY }}
+          graph-ref: apollo-retail-supergraph@prod
+          name: discovery
+          schema: ./subgraphs/discovery/schema.graphql
 
       - name: Check inventory subgraph
-        run: |
-          rover subgraph check apollo-retail-supergraph@prod \
-            --name inventory \
-            --schema ./subgraphs/inventory/schema.graphql
+        uses: apollosolutions/rover-actions/subgraph-check@v1
+        with:
+          apollo-key: ${{ secrets.APOLLO_KEY }}
+          graph-ref: apollo-retail-supergraph@prod
+          name: inventory
+          schema: ./subgraphs/inventory/schema.graphql
 
       - name: Check orders subgraph
-        run: |
-          rover subgraph check apollo-retail-supergraph@prod \
-            --name orders \
-            --schema ./subgraphs/orders/schema.graphql
+        uses: apollosolutions/rover-actions/subgraph-check@v1
+        with:
+          apollo-key: ${{ secrets.APOLLO_KEY }}
+          graph-ref: apollo-retail-supergraph@prod
+          name: orders
+          schema: ./subgraphs/orders/schema.graphql
 
       - name: Check products subgraph
-        run: |
-          rover subgraph check apollo-retail-supergraph@prod \
-            --name products \
-            --schema ./subgraphs/products/schema.graphql
+        uses: apollosolutions/rover-actions/subgraph-check@v1
+        with:
+          apollo-key: ${{ secrets.APOLLO_KEY }}
+          graph-ref: apollo-retail-supergraph@prod
+          name: products
+          schema: ./subgraphs/products/schema.graphql
 
       - name: Check reviews subgraph
-        run: |
-          rover subgraph check apollo-retail-supergraph@prod \
-            --name reviews \
-            --schema ./subgraphs/reviews/schema.graphql
+        uses: apollosolutions/rover-actions/subgraph-check@v1
+        with:
+          apollo-key: ${{ secrets.APOLLO_KEY }}
+          graph-ref: apollo-retail-supergraph@prod
+          name: reviews
+          schema: ./subgraphs/reviews/schema.graphql
 
       - name: Check shipping subgraph
-        run: |
-          rover subgraph check apollo-retail-supergraph@prod \
-            --name shipping \
-            --schema ./subgraphs/shipping/schema.graphql
+        uses: apollosolutions/rover-actions/subgraph-check@v1
+        with:
+          apollo-key: ${{ secrets.APOLLO_KEY }}
+          graph-ref: apollo-retail-supergraph@prod
+          name: shipping
+          schema: ./subgraphs/shipping/schema.graphql
 
       - name: Check users subgraph
-        run: |
-          rover subgraph check apollo-retail-supergraph@prod \
-            --name users \
-            --schema ./subgraphs/users/schema.graphql
+        uses: apollosolutions/rover-actions/subgraph-check@v1
+        with:
+          apollo-key: ${{ secrets.APOLLO_KEY }}
+          graph-ref: apollo-retail-supergraph@prod
+          name: users
+          schema: ./subgraphs/users/schema.graphql
 
   actionlint:
     runs-on: ubuntu-latest
