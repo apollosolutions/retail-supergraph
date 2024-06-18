@@ -3,6 +3,11 @@ extend schema
 
 type Query {
   """
+  List all available products without any search filters
+  """
+  listAllProducts: [Product]
+  
+  """
   Get all available products to shop for. Optionally provide some search filters
   """
   searchProducts(searchInput: ProductSearchInput! = {}): [Product]

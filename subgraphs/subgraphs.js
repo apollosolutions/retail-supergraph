@@ -1,6 +1,8 @@
 import { expressMiddleware } from '@apollo/server/express4';
 import { ApolloServer } from '@apollo/server';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
+import { ApolloServerPluginInlineTraceDisabled } from '@apollo/server/plugin/disabled';
+
 import express from 'express';
 import http from 'http';
 import cors from 'cors';
@@ -66,7 +68,7 @@ export const startSubgraphs = async (httpPort) => {
       schema,
       // For a real subgraph introspection should remain off, but for demo we enabled
       introspection: true,
-      plugins: [ApolloServerPluginDrainHttpServer({ httpServer })]
+      plugins: [ApolloServerPluginDrainHttpServer({ httpServer }), ApolloServerPluginInlineTraceDisabled()]
     });
 
     await server.start();

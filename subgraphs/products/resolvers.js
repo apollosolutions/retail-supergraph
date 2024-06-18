@@ -7,6 +7,9 @@ export const resolvers = {
   Query: {
     product: (_, { id }) => getProductById(id),
     variant: (_, { id }) => getVariantById(id),
+    listAllProducts() {
+      return PRODUCTS;
+    },
     searchVariants(_, { searchInput }) {
       if (searchInput?.sizeStartsWith) {
         return VARIANTS.filter((v) =>
