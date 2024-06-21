@@ -88,4 +88,6 @@ export const startSubgraphs = async (httpPort) => {
 
   // Start entire monolith at given port
   await new Promise((resolve) => httpServer.listen({ port: serverPort }, resolve));
+
+  console.log('All subgraphs started.')
 };

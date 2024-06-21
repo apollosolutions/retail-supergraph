@@ -36,7 +36,7 @@ jobs:
         uses: apollosolutions/rover-actions/subgraph-check@v1
         with:
           apollo-key: ${{ secrets.APOLLO_KEY }}
-          graph-ref: apollo-retail-supergraph@prod
+          graph-ref: ${{ vars.APOLLO_GRAPH_REF }}
           name: checkout
           schema: ./subgraphs/checkout/schema.graphql
 
@@ -44,7 +44,7 @@ jobs:
         uses: apollosolutions/rover-actions/subgraph-check@v1
         with:
           apollo-key: ${{ secrets.APOLLO_KEY }}
-          graph-ref: apollo-retail-supergraph@prod
+          graph-ref: ${{ vars.APOLLO_GRAPH_REF }}
           name: discovery
           schema: ./subgraphs/discovery/schema.graphql
 
@@ -52,7 +52,7 @@ jobs:
         uses: apollosolutions/rover-actions/subgraph-check@v1
         with:
           apollo-key: ${{ secrets.APOLLO_KEY }}
-          graph-ref: apollo-retail-supergraph@prod
+          graph-ref: ${{ vars.APOLLO_GRAPH_REF }}
           name: inventory
           schema: ./subgraphs/inventory/schema.graphql
 
@@ -60,7 +60,7 @@ jobs:
         uses: apollosolutions/rover-actions/subgraph-check@v1
         with:
           apollo-key: ${{ secrets.APOLLO_KEY }}
-          graph-ref: apollo-retail-supergraph@prod
+          graph-ref: ${{ vars.APOLLO_GRAPH_REF }}
           name: orders
           schema: ./subgraphs/orders/schema.graphql
 
@@ -68,7 +68,7 @@ jobs:
         uses: apollosolutions/rover-actions/subgraph-check@v1
         with:
           apollo-key: ${{ secrets.APOLLO_KEY }}
-          graph-ref: apollo-retail-supergraph@prod
+          graph-ref: ${{ vars.APOLLO_GRAPH_REF }}
           name: products
           schema: ./subgraphs/products/schema.graphql
 
@@ -76,7 +76,7 @@ jobs:
         uses: apollosolutions/rover-actions/subgraph-check@v1
         with:
           apollo-key: ${{ secrets.APOLLO_KEY }}
-          graph-ref: apollo-retail-supergraph@prod
+          graph-ref: ${{ vars.APOLLO_GRAPH_REF }}
           name: reviews
           schema: ./subgraphs/reviews/schema.graphql
 
@@ -84,7 +84,7 @@ jobs:
         uses: apollosolutions/rover-actions/subgraph-check@v1
         with:
           apollo-key: ${{ secrets.APOLLO_KEY }}
-          graph-ref: apollo-retail-supergraph@prod
+          graph-ref: ${{ vars.APOLLO_GRAPH_REF }}
           name: shipping
           schema: ./subgraphs/shipping/schema.graphql
 
@@ -92,7 +92,7 @@ jobs:
         uses: apollosolutions/rover-actions/subgraph-check@v1
         with:
           apollo-key: ${{ secrets.APOLLO_KEY }}
-          graph-ref: apollo-retail-supergraph@prod
+          graph-ref: ${{ vars.APOLLO_GRAPH_REF }}
           name: users
           schema: ./subgraphs/users/schema.graphql
 
