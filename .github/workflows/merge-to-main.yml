@@ -29,60 +29,68 @@ jobs:
       - uses: apollosolutions/rover-actions/install-rover-cli@v1
 
       - name: Publish checkout schema
-        working-directory: ./subgraphs/checkout
-        run: |
-          rover subgraph publish apollo-retail-supergraph@prod \
-            --name checkout \
-            --schema schema.graphql
+        uses: apollosolutions/rover-actions/subgraph-publish@v1
+        with:
+          apollo-key: ${{ secrets.APOLLO_KEY }}
+          graph-ref: ${{ vars.APOLLO_GRAPH_REF }}
+          name: checkout
+          schema: ./subgraphs/checkout/schema.graphql
 
       - name: Publish discovery schema
-        working-directory: ./subgraphs/discovery
-        run: |
-          rover subgraph publish apollo-retail-supergraph@prod \
-            --name discovery \
-            --schema schema.graphql
+        uses: apollosolutions/rover-actions/subgraph-publish@v1
+        with:
+          apollo-key: ${{ secrets.APOLLO_KEY }}
+          graph-ref: ${{ vars.APOLLO_GRAPH_REF }}
+          name: discovery
+          schema: ./subgraphs/discovery/schema.graphql
 
       - name: Publish inventory schema
-        working-directory: ./subgraphs/inventory
-        run: |
-          rover subgraph publish apollo-retail-supergraph@prod \
-            --name inventory \
-            --schema schema.graphql
+        uses: apollosolutions/rover-actions/subgraph-publish@v1
+        with:
+          apollo-key: ${{ secrets.APOLLO_KEY }}
+          graph-ref: ${{ vars.APOLLO_GRAPH_REF }}
+          name: inventory
+          schema: ./subgraphs/inventory/schema.graphql
 
       - name: Publish orders schema
-        working-directory: ./subgraphs/orders
-        run: |
-          rover subgraph publish apollo-retail-supergraph@prod \
-            --name orders \
-            --schema schema.graphql
+        uses: apollosolutions/rover-actions/subgraph-publish@v1
+        with:
+          apollo-key: ${{ secrets.APOLLO_KEY }}
+          graph-ref: ${{ vars.APOLLO_GRAPH_REF }}
+          name: orders
+          schema: ./subgraphs/orders/schema.graphql
 
       - name: Publish products schema
-        working-directory: ./subgraphs/products
-        run: |
-          rover subgraph publish apollo-retail-supergraph@prod \
-            --name products \
-            --schema schema.graphql
+        uses: apollosolutions/rover-actions/subgraph-publish@v1
+        with:
+          apollo-key: ${{ secrets.APOLLO_KEY }}
+          graph-ref: ${{ vars.APOLLO_GRAPH_REF }}
+          name: products
+          schema: ./subgraphs/products/schema.graphql
 
       - name: Publish reviews schema
-        working-directory: ./subgraphs/reviews
-        run: |
-          rover subgraph publish apollo-retail-supergraph@prod \
-            --name reviews \
-            --schema schema.graphql
+        uses: apollosolutions/rover-actions/subgraph-publish@v1
+        with:
+          apollo-key: ${{ secrets.APOLLO_KEY }}
+          graph-ref: ${{ vars.APOLLO_GRAPH_REF }}
+          name: reviews
+          schema: ./subgraphs/reviews/schema.graphql
 
       - name: Publish shipping schema
-        working-directory: ./subgraphs/shipping
-        run: |
-          rover subgraph publish apollo-retail-supergraph@prod \
-            --name shipping \
-            --schema schema.graphql
+        uses: apollosolutions/rover-actions/subgraph-publish@v1
+        with:
+          apollo-key: ${{ secrets.APOLLO_KEY }}
+          graph-ref: ${{ vars.APOLLO_GRAPH_REF }}
+          name: shipping
+          schema: ./subgraphs/shipping/schema.graphql
 
       - name: Publish users schema
-        working-directory: ./subgraphs/users
-        run: |
-          rover subgraph publish apollo-retail-supergraph@prod \
-            --name users \
-            --schema schema.graphql
+        uses: apollosolutions/rover-actions/subgraph-publish@v1
+        with:
+          apollo-key: ${{ secrets.APOLLO_KEY }}
+          graph-ref: ${{ vars.APOLLO_GRAPH_REF }}
+          name: users
+          schema: ./subgraphs/users/schema.graphql
 
   publish-README:
     runs-on: ubuntu-latest
@@ -92,4 +100,4 @@ jobs:
       - uses: apollosolutions/rover-actions/install-rover-cli@v1
 
       - name: Publish README
-        run: rover readme publish apollo-retail-supergraph@prod --file README.md
+        run: rover readme publish ${{ vars.APOLLO_GRAPH_REF }} --file README.md

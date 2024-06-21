@@ -1,4 +1,4 @@
-federation_version: =2.5.0
+federation_version: =2.8.1
 subgraphs:
   checkout:
     routing_url: http://localhost:4001/checkout/graphql
