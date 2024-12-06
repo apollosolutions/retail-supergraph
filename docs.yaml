@@ -1,0 +1,5 @@
+name: retail-supergraph
+description: A demonstration supergraph for a retail business containing
+  checkout, discovery, inventory, orders, products, reviews, shipping, and users
+  subgraphs. We encourage you to use the schema as inspiration for your own
+  retail supergraph!
